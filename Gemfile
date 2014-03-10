@@ -37,7 +37,6 @@ gem 'devise'
 gem 'gmaps4rails'
 gem 'haml-rails'
 gem 'geocoder'
-gem 'sqlite3'
 gem 'rails_12factor'
 
 # Use ActiveModel has_secure_password

@@ -50,4 +50,5 @@ gem 'gmaps4rails'
 gem 'geocoder'
 group :development do
 	gem 'pry-rails'
+        gem 'debugger'
 end

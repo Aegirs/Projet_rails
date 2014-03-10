@@ -1,0 +1,45 @@
+.transparent
+  .block
+    %h2
+      Edition du profil #{current_user.email.to_s}
+    = form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put }) do |f|
+      = devise_error_messages!
+      %div
+        =f.label :nom
+        %br/
+        =f.text_field :nom, :autofocus => true
+      %div
+        =f.label :prenom
+        %br/
+        =f.text_field :prenom, :autofocus => true
+      %div
+        =f.label :pseudo
+        %br/
+        =f.text_field :pseudo, :autofocus => true
+      %div
+        = f.label :email
+        %br/
+        = f.email_field :email, :autofocus => true
+      - if devise_mapping.confirmable? && resource.pending_reconfirmation?
+        %div
+          Currently waiting confirmation for: #{resource.unconfirmed_email}
+      %div
+        = f.label :Mot_de_passe
+        %i (Pour ne pas changer, laisser vide)
+        %br/
+        = f.password_field :password, :autocomplete => "off"
+      %div
+        = f.label :Confirmation_du_mot_de_passe
+        %br/
+        = f.password_field :password_confirmation
+      %div
+        = f.label :Mot_de_passe_actuel
+        %i (Votre ancien mot de passe pour valider les changements)
+        %br/
+        = f.password_field :current_password
+      %br/
+      %div= f.submit "Mettre à jour"
+    %h3 Cancel my account
+    %p
+      Pas content ? #{button_to "Annuler mon compte", registration_path(resource_name), :data => { :confirm => "Etes-vous sûr ?" }, :method => :delete}
+    = link_to "Retour", :back

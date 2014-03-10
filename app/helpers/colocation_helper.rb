@@ -1,0 +1,2 @@
+module ColocationHelper
+end

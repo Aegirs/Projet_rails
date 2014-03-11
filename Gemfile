@@ -5,6 +5,7 @@ gem 'rails', '4.0.3'
 
 # Use postgresql as the database for Active Record
 gem 'pg'
+gem 'foreman'
 
 gem 'haml-rails'
 # Use SCSS for stylesheets
@@ -49,8 +50,8 @@ gem 'bcrypt'
 #	gem 'pry-rails'
 #end
 
+gem 'haml'
 gem 'devise'
 gem 'gmaps4rails'
-#gem 'haml-rails'
 gem 'geocoder'
 gem 'rails_12factor'

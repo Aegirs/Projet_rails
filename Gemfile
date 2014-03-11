@@ -49,9 +49,9 @@ gem 'debugger', group: [:development, :test]
 group :development do
 	gem 'pry-rails'
 end
+gem 'rails_12factor', group: :production
 
 gem 'haml'
 gem 'devise'
 gem 'gmaps4rails'
 gem 'geocoder'
-gem 'rails_12factor'

@@ -5,7 +5,7 @@ gem 'rails', '4.0.3'
 
 # Use postgresql as the database for Active Record
 gem 'pg'
-#gem 'foreman'
+gem 'foreman'
 
 gem 'haml-rails'
 # Use SCSS for stylesheets

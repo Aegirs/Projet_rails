@@ -33,12 +33,6 @@ group :doc do
   gem 'sdoc', require: false
 end
 
-gem 'devise'
-gem 'gmaps4rails'
-gem 'haml-rails'
-gem 'geocoder'
-gem 'rails_12factor'
-
 # Use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.1.2'
 gem 'bcrypt'
@@ -51,6 +45,12 @@ gem 'bcrypt'
 # Use debugger
 # gem 'debugger', group: [:development, :test]
 
-group :development do
-	gem 'pry-rails'
-end
+#group :development do
+#	gem 'pry-rails'
+#end
+
+gem 'devise'
+gem 'gmaps4rails'
+#gem 'haml-rails'
+gem 'geocoder'
+gem 'rails_12factor'

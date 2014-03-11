@@ -44,11 +44,11 @@ gem 'bcrypt'
 #gem 'capistrano', group: :development
 
 # Use debugger
-# gem 'debugger', group: [:development, :test]
+gem 'debugger', group: [:development, :test]
 
-#group :development do
-#	gem 'pry-rails'
-#end
+group :development do
+	gem 'pry-rails'
+end
 
 gem 'haml'
 gem 'devise'

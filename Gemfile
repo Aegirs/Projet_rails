@@ -44,6 +44,7 @@ end
 # Use debugger
 # gem 'debugger', group: [:development, :test]
 
+gem "rake", "!= 0.9.0"
 gem 'haml-rails'
 gem 'geocoder'
 gem 'bcrypt'

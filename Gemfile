@@ -46,11 +46,8 @@ gem 'bcrypt'
 # Use debugger
 gem 'debugger', group: [:development, :test]
 
-group :development do
-	gem 'pry-rails'
-end
 gem 'rails_12factor', group: :production
-
+gem 'pry-rails'
 gem 'haml'
 gem 'devise'
 gem 'gmaps4rails'

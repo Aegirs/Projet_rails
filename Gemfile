@@ -46,3 +46,4 @@ end
 
 gem 'bcrypt'
 gem 'devise'
+gem 'gmaps4rails'

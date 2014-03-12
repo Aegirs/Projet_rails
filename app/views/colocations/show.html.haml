@@ -1,0 +1,12 @@
+%h1=@colocation.titre
+%br/
+%p 
+  Cette colocation est située à #{@colocation.adress}
+%p
+  Pour #{@colocation.superficie} m² avec #{@colocation.chambre} chambres
+%p 
+  L'appartement est acutellement occupé par #{@colocation.occupants} personnes
+  %br/
+  Ils sont à la recherche de #{@nb_colocs_supp} personnes supplémentaires
+%p=@colocation.description
+

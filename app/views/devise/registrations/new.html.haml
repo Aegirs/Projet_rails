@@ -1,0 +1,37 @@
+%h2 Inscription
+= form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f|
+  = devise_error_messages!
+  %div
+    =f.label :nom
+    %br/
+    =f.text_field :nom
+  %div
+    =f.label :prenom
+    %br/
+    =f.text_field :prenom
+  %div
+    =f.label :pseudo
+    %br/
+    =f.text_field :pseudo
+  %div
+    = f.label :email
+    %br/
+    = f.email_field :email, :autofocus => true
+  %div
+    = f.label :password
+    %br/
+    = f.password_field :password
+  %div
+    = f.label :password_confirmation
+    %br/
+    = f.password_field :password_confirmation
+  %div
+    %label.checkbox-inline
+      %input#inlineCheckbox1{type: "radio", name: "sexe", id:"sexe1", value: "Homme", checked: "checked"}/
+      Homme
+    %label.checkbox-inline
+      %input#inlineCheckbox2{type: "radio", name: "sexe", id:"sexe2", value: "Femme"}/
+      Femme
+  %div
+    %input.form-control{name: "date", placeholder: "JJ/MM/AAAA", type: "integer",style:"width:15%"}/
+  %div= f.submit "S'inscrire"

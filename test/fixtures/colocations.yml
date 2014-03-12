@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  titre: MyString
+  adress: MyString
+  superficie: 1
+  chambre: 1
+  nbmaxcoloc: 1
+  loyer: 1
+  occupants: 1
+
+two:
+  titre: MyString
+  adress: MyString
+  superficie: 1
+  chambre: 1
+  nbmaxcoloc: 1
+  loyer: 1
+  occupants: 1

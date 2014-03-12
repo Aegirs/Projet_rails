@@ -14,10 +14,11 @@
       internal: {id: 'map'}
     }, 
     function() {
-     
+      markers =handler.addMarkers(#{@hash.to_json});
       handler.bounds.extendWith(markers);
       handler.map.centerOn({ lat: 48.5, lng: 7.7 }); 
       handler.getMap().setZoom(10);
     }
   );
- 
+  
+  

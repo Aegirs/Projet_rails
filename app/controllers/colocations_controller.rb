@@ -7,7 +7,6 @@ class ColocationsController < ApplicationController
 		marker.infowindow colocation.description
 		marker.json({titre: colocation.titre})
 		
-		
 	end
   end
   

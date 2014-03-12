@@ -8,7 +8,7 @@ class ColocationsController < ApplicationController
 		marker.json({titre: colocation.titre})
 		
 		marker.picture({
-		 "url" => "/assets/markerIcons/largeTDGreenIcons/blank.png", 
+		 "url" => "/images/assets/markerIcons/largeTDGreenIcons/blank.png", 
 		 "width" => 36,
 		 "height" => 36
 		})

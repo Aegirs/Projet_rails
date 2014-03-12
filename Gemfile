@@ -44,6 +44,7 @@ end
 # Use debugger
 # gem 'debugger', group: [:development, :test]
 
+gem 'haml-rails'
 gem 'bcrypt'
 gem 'devise'
 gem 'gmaps4rails'

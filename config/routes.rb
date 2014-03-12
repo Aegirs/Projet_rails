@@ -1,11 +1,11 @@
 Coloclify::Application.routes.draw do
-  get "acceuil/index"
-  get "acceuil/show"
+  get "acceuils/index"
+  get "acceuils/show"
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
-
+  resource :acceuils
   # You can have the root of your site routed with "root"
-  root 'acceuil#index'
+  root 'acceuils#index'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

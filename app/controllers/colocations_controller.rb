@@ -7,11 +7,7 @@ class ColocationsController < ApplicationController
 		marker.infowindow colocation.description
 		marker.json({titre: colocation.titre})
 		
-		marker.picture({
-		 "url" => "/images/assets/markerIcons/largeTDGreenIcons/blank.png", 
-		 "width" => 36,
-		 "height" => 36
-		})
+		
 	end
   end
   

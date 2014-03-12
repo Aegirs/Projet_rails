@@ -3,7 +3,7 @@
 %script{src: "//google-maps-utility-library-v3.googlecode.com/svn/trunk/richmarker/src/richmarker-compiled.js", type: "text/javascript"}
 
 %h1 Carte
-
+%p=@hash.to_json
 %div{style: "width: 80%; height: 400px;"}
   #map{style: "width: 80%; height: 400px;"}
 

@@ -49,8 +49,9 @@ gem 'bcrypt'
 group :development do
 	gem 'pry-rails'
 end
-gem 'rails_12factor'
 
+gem 'rails_12factor'
+gem 'json'
 gem 'haml'
 gem 'devise'
 gem 'gmaps4rails'

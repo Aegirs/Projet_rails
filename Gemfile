@@ -45,7 +45,7 @@ end
 # gem 'debugger', group: [:development, :test]
 
 gem 'haml-rails'
-gem 'geocoder'
+#gem 'geocoder'
 gem 'bcrypt'
 gem 'devise'
 gem 'rails_12factor'

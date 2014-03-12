@@ -10,7 +10,7 @@ Coloclify::Application.routes.draw do
   get "colocations/index"
   get "colocations/show"
   get "colocations/new"
-  
+  get "colocation/edit"
   resources :colocations
   resources :messages
   root to: "colocations#index"

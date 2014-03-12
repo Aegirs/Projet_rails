@@ -1,0 +1,35 @@
+%h2 Editer Colocation
+= form_for @colocation do |f|
+  %div
+    =f.label :titre
+    %br/
+    =f.text_field :titre
+  %div
+    =f.label :adress
+    %br/
+    =f.text_field :adress
+  %div
+    =f.label :superficie
+    %br/
+    =f.text_field :superficie
+  %div
+    = f.label :chambre
+    %br/
+    = f.text_field :chambre
+  %div
+    = f.label :nbmaxcoloc
+    %br/
+    = f.text_field :nbmaxcoloc
+  %div
+    = f.label :loyer
+    %br/
+    = f.text_field :loyer
+  %div
+    = f.label :occupants
+    %br/
+    = f.text_field :occupants
+  %div
+    = f.label :description
+    %br/
+    = f.text_area :description
+  %div= f.submit "Editer"

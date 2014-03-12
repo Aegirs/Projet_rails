@@ -6,7 +6,26 @@ class ColocationsController < ApplicationController
 		marker.lng colocation.longitude
 		marker.infowindow colocation.description
 		marker.json({titre: colocation.titre})
-		
+		nb_colocs_supp = colocation.nbmaxcoloc.to_i - colocation.occupants.to_i
+		if (colocation.occupants.to_f/colocation.nbmaxcoloc.to_f >= 0.5)
+		marker.picture({
+		 "url" => "/assets/markerIcons/largeTDYellowIcons/marker#{nb_colocs_supp}.png", 
+		 "width" => 30,
+		 "height" => 30
+		})
+		elsif (colocation.occupants.to_f/colocation.nbmaxcoloc.to_f < 0.5 && colocation.occupants.to_f/colocation.nbmaxcoloc.to_f > 0)
+		marker.picture({
+		 "url" => "/assets/markerIcons/largeTDGreenIcons/marker#{nb_colocs_supp}.png", 
+		 "width" => 30,
+		 "height" => 30
+		})
+		else
+		marker.picture({
+		 "url" => "/assets/markerIcons/largeTDRedIcons/marker#{nb_colocs_supp}.png", 
+		 "width" => 30,
+		 "height" => 30
+		})
+		end
 	end
   end
   
@@ -28,4 +47,15 @@ class ColocationsController < ApplicationController
     @colocation=Colocation.find(params[:id])
     @nb_colocs_supp = @colocation.nbmaxcoloc.to_i - @colocation.occupants.to_i
   end
+ def edit
+  	@colocation=Colocation.find(params[:id])
+  end
+  def update
+    @colocation=Colocation.find(params[:id])
+    if @colocation.update(params[:colocation].permit(:titre,:adress,:superficie,:chambre,:nbmaxcoloc,:loyer,:occupants,:description))
+      redirect_to "/colocations"
+    else
+      render 'edit'
+    end
+  end 
 end

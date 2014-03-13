@@ -8,8 +8,6 @@ gem 'pg'
 
 gem 'foreman'
 
-gem 'haml-rails'
-
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.0'
 
@@ -60,24 +58,3 @@ gem 'bcrypt'
 gem 'devise'
 gem 'rails_12factor'
 gem 'gmaps4rails'
-
-gem 'bcrypt'
-# Use unicorn as the app server
-#gem 'unicorn'
-
-# Use Capistrano for deployment
-#gem 'capistrano', group: :development
-
-# Use debugger
-#gem 'debugger', group: [:development, :test]
-
-group :development do
-	gem 'pry-rails'
-end
-
-gem 'rails_12factor'
-gem 'json'
-gem 'haml'
-gem 'devise'
-gem 'gmaps4rails'
-gem 'geocoder'

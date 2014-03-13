@@ -1,5 +1,10 @@
 source 'https://rubygems.org'
 ruby '2.1.0'
+gem "rake", "!= 0.9.0"
+gem 'gmaps4rails'
+gem 'geocoder'
+
+
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.0.3'
 
@@ -51,10 +56,7 @@ end
 # Use debugger
 # gem 'debugger', group: [:development, :test]
 
-gem "rake", "!= 0.9.0"
 gem 'haml-rails'
-gem 'geocoder'
 gem 'bcrypt'
 gem 'devise'
 gem 'rails_12factor'
-gem 'gmaps4rails'

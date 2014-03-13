@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 Coloclify::Application.configure do
+=======
+Projet::Application.configure do
+>>>>>>> 9e1b7cc9170d79e311352bdb51af80c736d9faf2
   # Settings specified here will take precedence over those in config/application.rb.
 
   # Code is not reloaded between requests.

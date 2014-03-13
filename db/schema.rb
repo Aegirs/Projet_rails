@@ -11,7 +11,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+<<<<<<< HEAD
 ActiveRecord::Schema.define(version: 20140312184335) do
+=======
+ActiveRecord::Schema.define(version: 20140309001804) do
+>>>>>>> 9e1b7cc9170d79e311352bdb51af80c736d9faf2
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -27,6 +31,10 @@ ActiveRecord::Schema.define(version: 20140312184335) do
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"
     t.string   "last_sign_in_ip"
+<<<<<<< HEAD
+=======
+    t.string   "pseudo"
+>>>>>>> 9e1b7cc9170d79e311352bdb51af80c736d9faf2
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -41,12 +49,21 @@ ActiveRecord::Schema.define(version: 20140312184335) do
     t.integer  "chambre"
     t.integer  "nbmaxcoloc"
     t.integer  "loyer"
+<<<<<<< HEAD
     t.integer  "occupants"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.float    "longitude"
     t.float    "latitude"
     t.text     "description"
+=======
+    t.string   "occupants"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.float    "latitude"
+    t.float    "longitude"
+    t.string   "description"
+>>>>>>> 9e1b7cc9170d79e311352bdb51af80c736d9faf2
   end
 
   create_table "users", force: true do |t|

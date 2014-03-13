@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 Coloclify::Application.configure do
+=======
+Projet::Application.configure do
+>>>>>>> 9e1b7cc9170d79e311352bdb51af80c736d9faf2
   # Settings specified here will take precedence over those in config/application.rb.
 
   # In the development environment your application's code is reloaded on
@@ -15,10 +19,17 @@ Coloclify::Application.configure do
 
   # Don't care if the mailer can't send.
   config.action_mailer.raise_delivery_errors = false
+<<<<<<< HEAD
 
   # Print deprecation notices to the Rails logger.
   config.active_support.deprecation = :log
 
+=======
+  config.action_mailer.default_url_options = { :host => 'localhost:3000' }
+  # Print deprecation notices to the Rails logger.
+  config.active_support.deprecation = :log
+	
+>>>>>>> 9e1b7cc9170d79e311352bdb51af80c736d9faf2
   # Raise an error on page load if there are pending migrations
   config.active_record.migration_error = :page_load
 
@@ -26,4 +37,8 @@ Coloclify::Application.configure do
   # This option may cause significant delays in view rendering with a large
   # number of complex assets.
   config.assets.debug = true
+<<<<<<< HEAD
+=======
+  config.assets.initialize_on_precompile = false
+>>>>>>> 9e1b7cc9170d79e311352bdb51af80c736d9faf2
 end

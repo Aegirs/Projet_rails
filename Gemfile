@@ -5,7 +5,13 @@ gem 'rails', '4.0.3'
 
 # Use postgresql as the database for Active Record
 gem 'pg'
+<<<<<<< HEAD
 
+=======
+gem 'foreman'
+
+gem 'haml-rails'
+>>>>>>> 9e1b7cc9170d79e311352bdb51af80c736d9faf2
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.0'
 
@@ -16,7 +22,11 @@ gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails', '~> 4.0.0'
 
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes
+<<<<<<< HEAD
 # gem 'therubyracer', platforms: :ruby
+=======
+gem 'therubyracer', platforms: :ruby
+>>>>>>> 9e1b7cc9170d79e311352bdb51af80c736d9faf2
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
@@ -34,6 +44,7 @@ end
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.1.2'
+<<<<<<< HEAD
 
 # Use unicorn as the app server
 # gem 'unicorn'
@@ -51,3 +62,25 @@ gem 'bcrypt'
 gem 'devise'
 gem 'rails_12factor'
 gem 'gmaps4rails'
+=======
+gem 'bcrypt'
+# Use unicorn as the app server
+#gem 'unicorn'
+
+# Use Capistrano for deployment
+#gem 'capistrano', group: :development
+
+# Use debugger
+#gem 'debugger', group: [:development, :test]
+
+group :development do
+	gem 'pry-rails'
+end
+
+gem 'rails_12factor'
+gem 'json'
+gem 'haml'
+gem 'devise'
+gem 'gmaps4rails'
+gem 'geocoder'
+>>>>>>> 9e1b7cc9170d79e311352bdb51af80c736d9faf2

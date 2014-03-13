@@ -65,8 +65,13 @@
       -else
         %li
           %a{href: "/messages/index"} Messages                
+<<<<<<< HEAD
     .row
       .col-md-2
+=======
+    .row#milieu
+      .col-md-4
+>>>>>>> 9e1b7cc9170d79e311352bdb51af80c736d9faf2
         %ul.nav.nav-pills.nav-stacked
           %li.active
             %a{href: "/colocations/new"}
@@ -77,7 +82,11 @@
           %p.alert.alert-notice= notice
         - if alert
           %p.alert.alert-error= alert
+<<<<<<< HEAD
         .milieu
           = yield
+=======
+        = yield
+>>>>>>> 9e1b7cc9170d79e311352bdb51af80c736d9faf2
     %div
       .jumbotron.masthead

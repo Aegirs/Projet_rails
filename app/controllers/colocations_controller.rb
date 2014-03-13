@@ -6,6 +6,7 @@ class ColocationsController < ApplicationController
 		marker.lng colocation.longitude
 		marker.infowindow colocation.description
 		marker.json({titre: colocation.titre})
+<<<<<<< HEAD
 		nb_colocs_supp = colocation.nbmaxcoloc.to_i - colocation.occupants.to_i
 		if (colocation.occupants.to_f/colocation.nbmaxcoloc.to_f >= 0.5)
 		marker.picture({
@@ -26,6 +27,14 @@ class ColocationsController < ApplicationController
 		 "height" => 30
 		})
 		end
+=======
+		
+		marker.picture({
+		 "url" => "/assets/markerIcons/largeTDGreenIcons/blank.png", 
+		 "width" => 36,
+		 "height" => 36
+		})
+>>>>>>> 9e1b7cc9170d79e311352bdb51af80c736d9faf2
 	end
   end
   
@@ -47,6 +56,7 @@ class ColocationsController < ApplicationController
     @colocation=Colocation.find(params[:id])
     @nb_colocs_supp = @colocation.nbmaxcoloc.to_i - @colocation.occupants.to_i
   end
+<<<<<<< HEAD
  def edit
   	@colocation=Colocation.find(params[:id])
   end
@@ -58,4 +68,6 @@ class ColocationsController < ApplicationController
       render 'edit'
     end
   end 
+=======
+>>>>>>> 9e1b7cc9170d79e311352bdb51af80c736d9faf2
 end

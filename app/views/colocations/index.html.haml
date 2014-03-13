@@ -17,6 +17,9 @@
             %p="Adresse : #{colocations.adress}"
             %p="Superficie : #{colocations.superficie} m²"
 
+
+  
+
 :javascript
   handler = Gmaps.build('Google');
   handler.buildMap({ 
@@ -30,4 +33,3 @@
        handler.getMap().setZoom(10);
     }
   ); 
-  

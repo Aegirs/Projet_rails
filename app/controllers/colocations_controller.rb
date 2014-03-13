@@ -6,7 +6,6 @@ class ColocationsController < ApplicationController
 		marker.lng colocation.longitude
 		marker.infowindow colocation.description
 		marker.json({titre: colocation.titre})
-
 		nb_colocs_supp = colocation.nbmaxcoloc.to_i - colocation.occupants.to_i
 		if (colocation.occupants.to_f/colocation.nbmaxcoloc.to_f >= 0.5)
 		marker.picture({
@@ -47,9 +46,34 @@ class ColocationsController < ApplicationController
   def show
     @colocation=Colocation.find(params[:id])
     @nb_colocs_supp = @colocation.nbmaxcoloc.to_i - @colocation.occupants.to_i
+    @hash = Gmaps4rails.build_markers(@colocation) do |colocation, marker|
+		marker.lat colocation.latitude
+		marker.lng colocation.longitude
+		marker.infowindow colocation.description
+		marker.json({titre: colocation.titre})
+		nb_colocs_supp = colocation.nbmaxcoloc.to_i - colocation.occupants.to_i
+		if (colocation.occupants.to_f/colocation.nbmaxcoloc.to_f >= 0.5)
+		marker.picture({
+		 "url" => "/assets/markerIcons/largeTDYellowIcons/marker#{nb_colocs_supp}.png", 
+		 "width" => 30,
+		 "height" => 30
+		})
+		elsif (colocation.occupants.to_f/colocation.nbmaxcoloc.to_f < 0.5 && colocation.occupants.to_f/colocation.nbmaxcoloc.to_f > 0)
+		marker.picture({
+		 "url" => "/assets/markerIcons/largeTDGreenIcons/marker#{nb_colocs_supp}.png", 
+		 "width" => 30,
+		 "height" => 30
+		})
+		else
+		marker.picture({
+		 "url" => "/assets/markerIcons/largeTDRedIcons/marker#{nb_colocs_supp}.png", 
+		 "width" => 30,
+		 "height" => 30
+		})
+		end
+	end
   end
-  
-  def edit
+ def edit
   	@colocation=Colocation.find(params[:id])
   end
   def update
@@ -60,5 +84,4 @@ class ColocationsController < ApplicationController
       render 'edit'
     end
   end 
-
 end

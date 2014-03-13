@@ -22,7 +22,7 @@
           %p.navbar-text.pull-right
           - if user_signed_in?
             = succeed "" do
-              %strong= current_user.email
+              %strong= current_user.pseudo
               connecté
               %br/
             %strong

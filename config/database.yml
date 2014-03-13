@@ -17,11 +17,7 @@
 development:
   adapter: postgresql
   encoding: unicode
-<<<<<<< HEAD
   database: Coloclify_development
-=======
-  database: Projet_development
->>>>>>> 9e1b7cc9170d79e311352bdb51af80c736d9faf2
   pool: 5
   username: tprails
   password: thomas
@@ -50,11 +46,7 @@ development:
 test:
   adapter: postgresql
   encoding: unicode
-<<<<<<< HEAD
   database: Coloclify_test
-=======
-  database: Projet_test
->>>>>>> 9e1b7cc9170d79e311352bdb51af80c736d9faf2
   pool: 5
   username: tprails
   password: thomas
@@ -62,13 +54,7 @@ test:
 production:
   adapter: postgresql
   encoding: unicode
-<<<<<<< HEAD
   database: Coloclify_production
   pool: 5
   username: Coloclify
-=======
-  database: Projet_production
-  pool: 5
-  username: Projet
->>>>>>> 9e1b7cc9170d79e311352bdb51af80c736d9faf2
   password:

@@ -1,0 +1,65 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or vendor/assets/stylesheets of plugins, if any, can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the top of the
+ * compiled file, but it's generally better to create a new file per style scope.
+ *
+
+
+ */
+#map img {
+  max-width: none; }
+
+#map label {
+  width: auto;
+  display: inline; }
+
+.milieu {
+  /*background: image-url('fond2.jpg');*/
+  background-position: center;
+  background-size: 100% auto;
+  width: 100%;
+  height: 700px; }
+
+.jumbotron {
+  /*background: image-url('');*/
+  background-position: center;
+  background-size: 100% auto; }
+
+.logo {
+  background-color: black;
+  width: 40%; }
+
+.email_field {
+  width: 35%;
+  height: 20%;
+  font-size: 80%; }
+
+.password_field {
+  width: 20%;
+  height: 20%;
+  font-size: 80%; }
+
+#defile {
+  height: 400px;
+  width: 300%; }
+
+#grosbouton {
+  height: 50%;
+  width: 100%;
+  border: 1px solid blue; }
+#map img {
+  max-width: none; }
+
+#map label {
+  width: auto;
+  display: inline; }
+.transparent{
+	background-color:rgba(255,255,255,0.7);
+	width: 55%;
+	padding:30px;
+}

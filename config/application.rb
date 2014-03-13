@@ -16,7 +16,8 @@ module Coloclify
     # Run "rake -D time" for a list of tasks for finding time zone names. Default is UTC.
     # config.time_zone = 'Central Time (US & Canada)'
 
-	#config.assets.enabled = true
+	config.assets.enabled = true
+	config.assets.initialize_on_precompile = false
 	#config.assets.prefix = Rails.root.join('tmp/assets').to_s
 	#config.assets.compile = true
 

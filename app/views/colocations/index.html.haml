@@ -8,7 +8,7 @@
       %h1 Carte
       
       %div{style: "width: 100%; height: 400px;"}
-        #map{style: "width: 100%; height: 400px;"}
+        #map{style: "width: 100%; height: 400px;position: relative; overflow: hidden;"}
     .col-md-2
       %div#defile{style: "overflow: auto"}
         -@colocation.each do |colocations|

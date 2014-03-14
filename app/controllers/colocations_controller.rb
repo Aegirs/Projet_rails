@@ -7,13 +7,14 @@ class ColocationsController < ApplicationController
 		marker.infowindow colocation.description
 		marker.json({titre: colocation.titre})
 		nb_colocs_supp = colocation.nbmaxcoloc.to_i - colocation.occupants.to_i
-		if (colocation.occupants.to_f/colocation.nbmaxcoloc.to_f >= 0.5)
+		@ratio = colocation.occupants.to_f/colocation.nbmaxcoloc.to_f
+		if ( @ratio >= 0.5 && @ratio < 1)
 		marker.picture({
 		 "url" => "/assets/markerIcons/largeTDYellowIcons/marker#{nb_colocs_supp}.png", 
 		 "width" => 30,
 		 "height" => 30
 		})
-		elsif (colocation.occupants.to_f/colocation.nbmaxcoloc.to_f < 0.5 && colocation.occupants.to_f/colocation.nbmaxcoloc.to_f > 0)
+		elsif ( @ratio < 0.5 && @ratio >= 0)
 		marker.picture({
 		 "url" => "/assets/markerIcons/largeTDGreenIcons/marker#{nb_colocs_supp}.png", 
 		 "width" => 30,
@@ -35,7 +36,7 @@ class ColocationsController < ApplicationController
   
   def create
 	@colocation=Colocation.new(params[:colocation].permit(:titre,:adress,:superficie,:chambre,:nbmaxcoloc,:loyer,:occupants,:description))
-	
+	@colocation.owner = current_user.pseudo
 	if @colocation.save
 		redirect_to root_path
 	else
@@ -52,13 +53,14 @@ class ColocationsController < ApplicationController
 		marker.infowindow colocation.description
 		marker.json({titre: colocation.titre})
 		nb_colocs_supp = colocation.nbmaxcoloc.to_i - colocation.occupants.to_i
-		if (colocation.occupants.to_f/colocation.nbmaxcoloc.to_f >= 0.5)
+		@ratio = colocation.occupants.to_f/colocation.nbmaxcoloc.to_f
+		if ( @ratio >= 0.5 && @ratio < 1)
 		marker.picture({
 		 "url" => "/assets/markerIcons/largeTDYellowIcons/marker#{nb_colocs_supp}.png", 
 		 "width" => 30,
 		 "height" => 30
 		})
-		elsif (colocation.occupants.to_f/colocation.nbmaxcoloc.to_f < 0.5 && colocation.occupants.to_f/colocation.nbmaxcoloc.to_f > 0)
+		elsif ( @ratio < 0.5 && @ratio >= 0)
 		marker.picture({
 		 "url" => "/assets/markerIcons/largeTDGreenIcons/marker#{nb_colocs_supp}.png", 
 		 "width" => 30,
@@ -75,6 +77,9 @@ class ColocationsController < ApplicationController
   end
  def edit
   	@colocation=Colocation.find(params[:id])
+  	if current_user.pseudo != @colocation.owner
+  	  redirect_to "/colocations/#{params[:id]}"
+  	end
   end
   def update
     @colocation=Colocation.find(params[:id])
@@ -84,4 +89,8 @@ class ColocationsController < ApplicationController
       render 'edit'
     end
   end 
+  def destroy
+    @colocation = Colocation.find(params[:id]).destroy
+    redirect_to "/colocations"
+  end
 end

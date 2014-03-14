@@ -15,20 +15,21 @@
     .jumbotron
       .container
       .row
-        .col-md-8
+        .col-md-10
           %font{size: '100% auto'}
-            Weblycoloc
-        .col-md-4        
+            Coloclify
+        .col-md-2        
           %p.navbar-text.pull-right
           - if user_signed_in?
             = succeed "" do
-              %strong= current_user.pseudo
+              %font{color: "green"}
+                %strong= current_user.pseudo
               connecté
               %br/
             %strong
               = link_to "Se déconnecter", destroy_user_session_path, method: :delete, :class => 'navbar-link'
               %br/
-              = link_to 'Editer profil', edit_user_registration_path, :class => 'navbar-link'
+              = link_to 'Mon compte', comptes_path, :class => 'navbar-link'
               
           - else
             = form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f|
@@ -49,30 +50,58 @@
     %ul.nav.nav-tabs.nav-justified
       -if @current_url.index("/acceuil") || @current_url.index("/users/sign_in") 
         %li.active
-          %a{href: "/acceuil/index"} Home
+          %a{href: "/acceuil"} Home
       -else
         %li
-          %a{href: "/acceuil/index"} Home
+          %a{href: "/acceuil"} Home
       -if @current_url == "/" 
         %li.active
           %a{href: "/"} Carte
       -else
         %li
-          %a{href: "/"} Carte
-      -if @current_url.index("/messages") 
-        %li.active
-          %a{href: "/messages/index"} Messages
-      -else
-        %li
-          %a{href: "/messages/index"} Messages                
+          %a{href: "/"} Carte             
     .row
       .col-md-2
-        %ul.nav.nav-pills.nav-stacked
-          %li.active
-            %a{href: "/colocations/new"}
-              Ajouter Colocation
+        -if @current_url.index("/comptes") || @current_url.index("/users") || @current_url.index("/messages") || @current_url.index("/colocations/new")
+          %ul.nav.nav-pills.nav-stacked
+            -if @current_url.index("/comptes")
+              %li.active
+                %a{href: "/comptes"} Mes colocations
+              .row
+                .col-md-8
+                  %ul.nav.nav-pills.nav-stacked
+                    %li
+                      %a{href: "/colocations/new"}
+                        Ajouter Colocation
+            -else
+              %li
+                %a{href: "/comptes"} Mes colocations
+              .row
+                .col-md-8
+                  %ul.nav.nav-pills.nav-stacked
+                    -if @current_url == "/colocations/new" 
+                      %li.active
+                        %a{href: "/colocations/new"}
+                          Ajouter Colocation
+                       
+            -if @current_url == "/users/edit" 
+              %li.active
+                %a{href: "/users/edit"} Informations
+            -else
+              %li
+                %a{href: "/users/edit"} Infomations
+            -if @current_url.index("/messages") 
+              %li.active
+                %a{href: "/messages"} Messages
+            -else
+              %li
+                %a{href: "/messages"} Messages   
+            
+        -else
+          %ul.nav.nav-pills.nav-stacked
+            
         
-      .col-md-8
+      .col-md-10
         - if notice
           %p.alert.alert-notice= notice
         - if alert

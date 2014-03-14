@@ -1,0 +1,13 @@
+%form.navbar-form.navbar-left{role: "search"}
+  .form-group
+    %input.form-control{placeholder: "Trouver colocation", type: "text"}/
+  %button.btn.btn-default{type: "submit"} Rechercher
+  %div#defile{style: "overflow: auto"}
+    -@colocation.each do |colocations|
+      .list-group
+        %a.btn.btn.btn-lg{href: "/colocations/#{colocations.id}", role: "button"}  
+          %h4.list-group-item-heading=colocations.titre
+          %p.list-group-item-text="Adresse : #{colocations.adress}"
+          %p.list-group-item-text="Superficie : #{colocations.superficie} m²"
+     
+     

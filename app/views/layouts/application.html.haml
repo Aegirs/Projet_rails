@@ -15,10 +15,10 @@
     .jumbotron
       .container
       .row
-        .col-md-10
+        .col-md-9
           %font{size: '100% auto'}
             Coloclify
-        .col-md-2        
+        .col-md-3        
           %p.navbar-text.pull-right
           - if user_signed_in?
             = succeed "" do
@@ -62,7 +62,7 @@
           %a{href: "/"} Carte             
     .row
       .col-md-2
-        -if @current_url.index("/comptes") || @current_url.index("/users") || @current_url.index("/messages") || @current_url.index("/colocations/new")
+        -if @current_url.index("/comptes") || @current_url.index("/users/edit") || @current_url.index("/messages") || @current_url.index("/colocations/new")
           %ul.nav.nav-pills.nav-stacked
             -if @current_url.index("/comptes")
               %li.active

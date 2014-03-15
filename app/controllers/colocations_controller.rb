@@ -12,19 +12,19 @@ class ColocationsController < ApplicationController
 		@ratio = colocation.occupants.to_f/colocation.nbmaxcoloc.to_f
 		if ( @ratio >= 0.5 && @ratio < 1)
 		marker.picture({
-		 "url" => "/assets/markerIcons/largeTDYellowIcons/marker#{nb_colocs_supp}.png", 
+		 "url" => "assets/markerIcons/largeTDYellowIcons/marker#{nb_colocs_supp}.png", 
 		 "width" => 30,
 		 "height" => 30
 		})
 		elsif ( @ratio < 0.5 && @ratio >= 0)
 		marker.picture({
-		 "url" => "/assets/markerIcons/largeTDGreenIcons/marker#{nb_colocs_supp}.png", 
+		 "url" => "assets/markerIcons/largeTDGreenIcons/marker#{nb_colocs_supp}.png", 
 		 "width" => 30,
 		 "height" => 30
 		})
 		else
 		marker.picture({
-		 "url" => "/assets/markerIcons/largeTDRedIcons/marker#{nb_colocs_supp}.png", 
+		 "url" => "assets/markerIcons/largeTDRedIcons/marker#{nb_colocs_supp}.png", 
 		 "width" => 30,
 		 "height" => 30
 		})

@@ -1,4 +1,6 @@
 class ColocationsController < ApplicationController
+  before_filter :authenticate_user!, except: [:index,:show]
+  
   def index	
 	@colocation=Colocation.all
     @hash = Gmaps4rails.build_markers(@colocation) do |colocation, marker|

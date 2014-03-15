@@ -17,9 +17,10 @@
       %br/
       Pour seulement : #{@colocation.loyer} €.
     %p=@colocation.description
-    -if current_user.pseudo == @colocation.owner
-      =button_to "Editer la colocation", "/colocations/#{@colocation.id}/edit",:controller => :colocations, :id => @colocation.id, class: "btn btn-default", :method => :get
-      =button_to "Supprimer" , { :controller => :colocations, :action => 'destroy', :id => @colocation.id}, :method => :delete,  class: "btn btn-danger"
+    -if user_signed_in?
+      -if current_user.pseudo == @colocation.owner
+        =button_to "Editer la colocation", "/colocations/#{@colocation.id}/edit",:controller => :colocations, :id => @colocation.id, class: "btn btn-default", :method => :get
+        =button_to "Supprimer" , { :controller => :colocations, :action => 'destroy', :id => @colocation.id}, :method => :delete,  class: "btn btn-danger"
 
   .col-md-6
     %h1 Carte

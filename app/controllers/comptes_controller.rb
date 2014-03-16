@@ -1,6 +1,6 @@
 class ComptesController < ApplicationController
   def index
-	@colocation=Colocation.where( owner: current_user.pseudo )
+	
   end
 
   def show

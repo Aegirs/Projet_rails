@@ -34,6 +34,7 @@ class ColocationsController < ApplicationController
   
   def new
 	@colocation=Colocation.new
+	@colocations=Colocation.where( owner: current_user.pseudo )
   end
   
   def create

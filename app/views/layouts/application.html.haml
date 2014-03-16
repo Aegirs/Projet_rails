@@ -55,24 +55,16 @@
           %ul.nav.nav-pills.nav-stacked
             -if @current_url.index("/comptes")
               %li.active
-                %a{href: "/comptes"} Mes colocations
-              .row
-                .col-md-8
-                  %ul.nav.nav-pills.nav-stacked
-                    %li
-                      %a{href: "/colocations/new"}
-                        Ajouter Colocation
+                %a{href: "/comptes"} Informations Pratiques
             -else
               %li
-                %a{href: "/comptes"} Mes colocations
-              .row
-                .col-md-8
-                  %ul.nav.nav-pills.nav-stacked
-                    -if @current_url == "/colocations/new" 
-                      %li.active
-                        %a{href: "/colocations/new"}
-                          Ajouter Colocation
-                       
+                %a{href: "/comptes"}  Informations Pratiques
+            -if @current_url.index("/colocations/new")
+              %li.active
+                %a{href: "/colocations/new"} Mes colocations
+            -else
+              %li
+                %a{href: "/colocations/new"} Mes colocations                           
             -if @current_url == "/users/edit" 
               %li.active
                 %a{href: "/users/edit"} Informations

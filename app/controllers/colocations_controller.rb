@@ -38,7 +38,7 @@ class ColocationsController < ApplicationController
   end
   
   def create
-	@colocation=Colocation.new(params[:colocation].permit(:titre,:adress,:superficie,:chambre,:nbmaxcoloc,:loyer,:occupants,:description))
+	@colocation=Colocation.new(params[:colocation].permit(:titre,:adress,:superficie,:chambre,:nbmaxcoloc,:loyer,:occupants,:description,:photo))
 	@colocation.owner = current_user.pseudo
 	if @colocation.save
 		redirect_to root_path

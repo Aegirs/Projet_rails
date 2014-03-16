@@ -1,1 +1,6 @@
+- if @users.avatar.exists? then
+  %p
+    Medium:#{image_tag @users.avatar.url(:medium)}
+- else
+  %p There are no photo's attached, upload one.
 

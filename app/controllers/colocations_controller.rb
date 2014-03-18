@@ -33,13 +33,16 @@ class ColocationsController < ApplicationController
   end
   
   def new
+    @colocations=Colocation.where( owner: current_user.pseudo )
 	@colocation=Colocation.new
-	@colocations=Colocation.where( owner: current_user.pseudo )
+	5.times { @colocation.photos.build }
+	
   end
   
   def create
-	@colocation=Colocation.new(params[:colocation].permit(:titre,:adress,:superficie,:chambre,:nbmaxcoloc,:loyer,:occupants,:description,:photo))
+	@colocation=Colocation.new(params.required(:colocation).permit(:titre,:adress,:superficie,:chambre,:nbmaxcoloc,:loyer,:occupants,:description,photos_attributes: [:image]))
 	@colocation.owner = current_user.pseudo
+	
 	if @colocation.save
 		redirect_to root_path
 	else
@@ -49,6 +52,7 @@ class ColocationsController < ApplicationController
   
   def show
     @colocation=Colocation.find(params[:id])
+    @photo=(Photo.where( colocation_id: params[:id])).where.not( image_file_name: nil)
     @nb_colocs_supp = @colocation.nbmaxcoloc.to_i - @colocation.occupants.to_i
     @hash = Gmaps4rails.build_markers(@colocation) do |colocation, marker|
 		marker.lat colocation.latitude
@@ -78,22 +82,29 @@ class ColocationsController < ApplicationController
 		end
 	end
   end
- def edit
+ def edit   
   	@colocation=Colocation.find(params[:id])
+  	@photo=(Photo.where( colocation_id: params[:id])).where.not( image_file_name: nil)
   	if current_user.pseudo != @colocation.owner
   	  redirect_to "/colocations/#{params[:id]}"
   	end
   end
   def update
     @colocation=Colocation.find(params[:id])
-    if @colocation.update(params[:colocation].permit(:titre,:adress,:superficie,:chambre,:nbmaxcoloc,:loyer,:occupants,:description))
-      redirect_to "/colocations"
+   
+    if @colocation.update(params[:colocation].permit(:titre,:adress,:superficie,:chambre,:nbmaxcoloc,:loyer,:occupants,:description,photos_attributes: [:image]))
+      redirect_to "/colocations/#{params[:id]}"
     else
       render 'edit'
     end
   end 
   def destroy
     @colocation = Colocation.find(params[:id]).destroy
+    @photo = Photo.where(colocation_id: params[:id])
+    @photo.each do |f|
+      f.destroy
+    end
     redirect_to "/colocations"
   end
+  
 end

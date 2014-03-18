@@ -1,7 +1,7 @@
 .row
   .col-md-6
     %h2 Ajouter Colocation
-    = form_for @colocation do |f|
+    = form_for @colocation,{ :multipart => true } do |f|
       %div
         =f.label :titre
         %br/
@@ -37,7 +37,9 @@
       %div
         = f.label 'Photo'
         %br/
-        = f.file_field :avatar
+        = f.fields_for :photos, multiple: true do |photo|       
+          = photo.file_field :image
+
       %div= f.submit "Ajouter"
   .col-md-6
     %h1 Mes Colocations

@@ -1,5 +1,5 @@
 %h2 Editer Colocation
-= form_for @colocation do |f|
+= form_for (@colocation),{ :multipart => true } do |f|
   %div
     =f.label :titre
     %br/
@@ -32,4 +32,14 @@
     = f.label :description
     %br/
     = f.text_area :description
+  %div
+    = f.label 'Photo'
+    #link
+      -@photo.each do |f|  
+        -if f.image.url    
+          %a{"data-gallery" => "", href: "#{f.image.url}", title: "Image"}
+            #{image_tag f.image.url(:thumb)}
+    %br/
+    = f.fields_for :photos,@colocation.photos.build, multiple: true do |photo|  
+      = photo.file_field :image   
   %div= f.submit "Editer"

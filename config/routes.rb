@@ -5,7 +5,9 @@ Coloclify::Application.routes.draw do
   devise_for :admins
   
   resources :comptes
-  resources :colocations
+  resources :colocations do 
+    resources :photos
+  end
   resources :messages
   resources :messages
   resources :acceuil

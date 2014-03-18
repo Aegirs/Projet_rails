@@ -52,7 +52,8 @@ class ColocationsController < ApplicationController
   
   def show
     @colocation=Colocation.find(params[:id])
-    @photo=(Photo.where( colocation_id: params[:id])).where.not( image_file_name: nil)
+    @photo=@colocation.photos
+    
     @nb_colocs_supp = @colocation.nbmaxcoloc.to_i - @colocation.occupants.to_i
     @hash = Gmaps4rails.build_markers(@colocation) do |colocation, marker|
 		marker.lat colocation.latitude
@@ -84,7 +85,8 @@ class ColocationsController < ApplicationController
   end
  def edit   
   	@colocation=Colocation.find(params[:id])
-  	@photo=(Photo.where( colocation_id: params[:id])).where.not( image_file_name: nil)
+  	@photo=@colocation.photos
+  	
   	if current_user.pseudo != @colocation.owner
   	  redirect_to "/colocations/#{params[:id]}"
   	end
@@ -99,8 +101,9 @@ class ColocationsController < ApplicationController
     end
   end 
   def destroy
+    
     @colocation = Colocation.find(params[:id]).destroy
-    @photo = Photo.where(colocation_id: params[:id])
+    @photo=@colocation.photos
     @photo.each do |f|
       f.destroy
     end

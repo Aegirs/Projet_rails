@@ -29,7 +29,7 @@
 	height: 1000px;
 }
 .jumbotron{
-	/*background: image-url('');*/
+	background: image-url('salon.jpg');
 	background-position: center;
 	background-size: 100% auto;
 }

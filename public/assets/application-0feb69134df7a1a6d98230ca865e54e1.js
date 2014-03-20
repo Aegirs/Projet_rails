@@ -11741,59 +11741,24 @@ return jQuery;
 
 
 }).call(this);
-(function() {
-  var RichMarkerBuilder,
-    __hasProp = {}.hasOwnProperty,
-    __extends = function(child, parent) { for (var key in parent) { if (__hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; };
+/**$(document).on("ready",function () {		
+		$(".photo-delete").on("click",function (e) {
+			e.preventDefault();
+			console.log($(this).data("id"));
+			$(this).attr("data-del","true");
+		});
+		
+		$(".edit_colocation").on("submit",function() {
+				$(".photo-delete[data-del]").data("id");
+				$('.colocation_deleted_photos').val(photoIds.join(','));
+		});
 
-  RichMarkerBuilder = (function(_super) {
-    __extends(RichMarkerBuilder, _super);
 
-    function RichMarkerBuilder() {
-      return RichMarkerBuilder.__super__.constructor.apply(this, arguments);
-    }
+});
 
-    RichMarkerBuilder.prototype.create_marker = function() {
-      var options;
-      options = _.extend(this.marker_options(), this.rich_marker_options());
-      return this.serviceObject = new RichMarker(options);
-    };
+$(this).data("id")**/
 
-    RichMarkerBuilder.prototype.rich_marker_options = function() {
-      var marker;
-      marker = document.createElement("div");
-      marker.setAttribute('class', 'marker_container');
-      marker.innerHTML = this.args.titre;
-      return _.extend(this.marker_options(), {
-        content: marker
-      });
-    };
-
-    return RichMarkerBuilder;
-
-  })(Gmaps.Google.Builders.Marker);
-
-  this.buildMap = function(marker) {
-    var handler;
-    handler = Gmaps.build('Google', {
-      builders: {
-        Marker: RichMarkerBuilder
-      }
-    });
-    return handler.buildMap({
-      provider: {},
-      internal: {
-        id: 'map'
-      }
-    }, function() {
-      var markers;
-      markers = handler.addMarkers(marker);
-      handler.bounds.extendWith(markers);
-      return handler.fitMapToBounds();
-    });
-  };
-
-}).call(this);
+;
 (function() {
 
 
@@ -11821,4 +11786,63 @@ return jQuery;
 
 
 
-;
+$(document).on("ready",function(){
+	var id=0,id2=10, i=0,nb_click=0;
+	for(i=1;i <10;i++) {
+		$('#colocation_photos_attributes_'+(i)+'_image').css("display","none");
+		$('#colocation_photos_attributes_'+(i+10)+'_image').css("display","none");
+	}
+	$("div[name^='suppression']").css("display","none");
+    $('#ajoutcoloc').click(function(e){
+      e.preventDefault();
+      if ($('#ajoutcoloc2').is(':hidden')){
+        $('#ajoutcoloc2').slideDown('500');
+        
+      }
+      else{
+        $('#ajoutcoloc2').slideUp('300');
+      }
+    });
+    
+    $('#ajout').click(function(e){
+      e.preventDefault();
+      
+      if ( id < 9 ) {
+		  id=id+1;
+		  id2=id2+1;
+	  }
+	  $('#colocation_photos_attributes_'+id+'_image').slideDown('500');
+	  $('#colocation_photos_attributes_'+id+'_image').css("display","block");
+	  
+	  if ( id == 9 ) {
+		$('#ajout').hide();
+		$('#fin').css("display","block");
+	  }
+    });
+    
+     $('#ajout_edit').on("click",function(e){
+		e.preventDefault();
+		$("img").each(function() {
+			var id3 = $(this).length + id2 + nb_click;
+			console.log(id3); 
+			$('#colocation_photos_attributes_'+id3+'_image').slideDown('500');
+			$('#colocation_photos_attributes_'+id3+'_image').css("display","block");
+			nb_click=nb_click+1;		
+	    });
+	 });
+			
+   $("div").mouseleave(function(e) {
+	    e.preventDefault();
+		$("div[name=suppression]").slideUp('500');
+   });
+   $("div").mouseenter(function(e) {
+		var numero = this.id;
+	    e.preventDefault();
+	    console.log(numero);
+		$('div').each(function() {
+			if ( (this).id == numero ) {
+				$(this).slideDown('300');
+			}
+		});		
+   });
+});

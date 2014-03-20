@@ -26,10 +26,10 @@
 	background-position: center;
 	background-size: 100% auto;
 	width: 100%;
-	height: 700px;
+	height: 1000px;
 }
 .jumbotron{
-	/*background: image-url('');*/
+	background: image-url('salon.jpg');
 	background-position: center;
 	background-size: 100% auto;
 }
@@ -53,6 +53,17 @@
 	height: 400px;
 	width: 150%;
 }
+
+#fin
+{
+ display:none;
+}
+
+#titre 
+{
+	width: 10%;
+}
+
 
 #map img {
   max-width: none; }

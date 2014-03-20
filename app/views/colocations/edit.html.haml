@@ -1,45 +1,33 @@
 %h2 Editer Colocation
-= form_for (@colocation),{ :multipart => true } do |f|
-  %div
-    =f.label :titre
-    %br/
-    =f.text_field :titre
-  %div
-    =f.label :adress
-    %br/
-    =f.text_field :adress
-  %div
-    =f.label :superficie
-    %br/
-    =f.text_field :superficie
-  %div
-    = f.label :chambre
-    %br/
-    = f.text_field :chambre
-  %div
-    = f.label :nbmaxcoloc
-    %br/
-    = f.text_field :nbmaxcoloc
-  %div
-    = f.label :loyer
-    %br/
-    = f.text_field :loyer
-  %div
-    = f.label :occupants
-    %br/
-    = f.text_field :occupants
-  %div
-    = f.label :description
-    %br/
-    = f.text_area :description
+= simple_form_for (@colocation), :defaults => { :wrapper_html => {:class => 'form-group'}, :input_html => { :class => 'form-control',:multipart => true } } do |f|
+  #titre= f.input :titre
+  #titre= f.input :adress
+  #titre= f.input :superficie
+  #titre= f.input :chambre
+  #titre= f.input :nbmaxcoloc
+  #titre= f.input :loyer
+  #titre= f.input :occupants
+  #titre= f.input :description
   %div
     = f.label 'Photo'
     #link
-      -@photo.each do |f|  
-        -if f.image.url    
-          %a{"data-gallery" => "", href: "#{f.image.url}", title: "Image"}
-            #{image_tag f.image.url(:thumb)}
+      = f.fields_for :photos do |photo|
+        -unless photo.object.new_record? 
+          %div{id:photo.object.id,name: "bloc",style: "width:6%;"}
+            %a{"data-gallery" => "", href: "#{photo.object.image.url}", title: @colocation.titre, id: photo.object.id}
+              #{image_tag photo.object.image.url(:thumb), id: photo.object.id}
+            %br/
+            %div{ id: photo.object.id,name: "suppression" }
+              =photo.label "Supprimer"
+              =photo.check_box :must_be_deleted
+              
+             
     %br/
-    = f.fields_for :photos,@colocation.photos.build, multiple: true do |photo|  
-      = photo.file_field :image   
-  %div= f.submit "Editer"
+    = f.fields_for :photos do |photo|
+      -if photo.object.new_record? 
+        = photo.file_field :image
+    %button.btn.btn-default#ajout_edit Photo +
+  %br/
+  %p#fin Nombre photo Max  
+  %div
+    = f.submit "Editer"

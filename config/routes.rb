@@ -3,7 +3,7 @@ Coloclify::Application.routes.draw do
 
   devise_for :users, :controllers => {:registrations => "registrations"}
   devise_for :admins
-  
+ 
   resources :comptes
   resources :colocations do 
     resources :photos

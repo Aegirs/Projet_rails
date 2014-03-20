@@ -35,7 +35,7 @@ class ColocationsController < ApplicationController
   def new
     @colocations=Colocation.where( owner: current_user.pseudo )
 	@colocation=Colocation.new
-	5.times { @colocation.photos.build }
+	10.times {@colocation.photos.build}
 	
   end
   
@@ -85,29 +85,36 @@ class ColocationsController < ApplicationController
   end
  def edit   
   	@colocation=Colocation.find(params[:id])
-  	@photo=@colocation.photos
-  	
+  	@photos=@colocation.photos
+  	@nombre = @photos.count
+  	(10 - @nombre).times {@colocation.photos.build}
   	if current_user.pseudo != @colocation.owner
   	  redirect_to "/colocations/#{params[:id]}"
   	end
   end
+  
   def update
-    @colocation=Colocation.find(params[:id])
-   
-    if @colocation.update(params[:colocation].permit(:titre,:adress,:superficie,:chambre,:nbmaxcoloc,:loyer,:occupants,:description,photos_attributes: [:image]))
+    @colocation=Colocation.find(params[:id]) 
+    if @colocation.update(params[:colocation].permit(:titre,:adress,:superficie,:chambre,:nbmaxcoloc,:loyer,:occupants,:description,photos_attributes: [:image,:id]))
+      
+      params[:colocation][:photos_attributes].each do |photo_attrs|
+	  if ( photo_attrs[1]['must_be_deleted'] == "1" )
+	     Photo.find(photo_attrs[1]['id']).destroy
+	    end
+	  end
+      
       redirect_to "/colocations/#{params[:id]}"
     else
       render 'edit'
     end
   end 
+
   def destroy
-    
     @colocation = Colocation.find(params[:id]).destroy
-    @photo=@colocation.photos
-    @photo.each do |f|
-      f.destroy
+    @colocation.photos.each do |photo|
+      photo.destroy
     end
-    redirect_to "/colocations"
+    redirect_to colocations_path
   end
   
 end

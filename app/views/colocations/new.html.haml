@@ -37,10 +37,13 @@
       %div
         = f.label 'Photo'
         %br/
-        = f.fields_for :photos, multiple: true do |photo|       
+        = f.fields_for :photos, multiple: true do |photo|   
           = photo.file_field :image
-
-      %div= f.submit "Ajouter"
+        %br/
+        %button.btn.btn-default#ajout Photo +
+      %br/
+      %p#fin Nombre photo Max  
+      %div= f.submit "Ajouter Colocation"
   .col-md-6
     %h1 Mes Colocations
     %div#defile{style: "overflow: auto"}
@@ -50,5 +53,4 @@
             %h4.list-group-item-heading=colocations.titre
             %p.list-group-item-text="Adresse : #{colocations.adress}"
             %p.list-group-item-text="Superficie : #{colocations.superficie} m²"
-
 

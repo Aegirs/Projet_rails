@@ -11787,7 +11787,7 @@ $(this).data("id")**/
 
 
 $(document).on("ready",function(){
-	var id=0,id2=10, i=0,nb_click=0;
+	var id=0,id2=11, i=0,nb_click=0;
 	$(".jumbotron").css("padding-bottom","0px");
 	$(".jumbotron").css("padding-top","0px");
 	for(i=1;i <10;i++) {
@@ -11824,13 +11824,12 @@ $(document).on("ready",function(){
     
      $('#ajout_edit').on("click",function(e){
 		e.preventDefault();
-		$("img").each(function() {
-			var id3 = $(this).length + id2 + nb_click;
-			console.log(id3); 
-			$('#colocation_photos_attributes_'+id3+'_image').slideDown('500');
-			$('#colocation_photos_attributes_'+id3+'_image').css("display","block");
-			nb_click=nb_click+1;		
-	    });
+		console.log($("img").length);
+		var id3 = $("img").length + id2 + nb_click;
+		console.log(id3); 
+		$('#colocation_photos_attributes_'+id3+'_image').slideDown('500');
+		$('#colocation_photos_attributes_'+id3+'_image').css("display","block");
+		nb_click=nb_click+1;		
 	 });
 	
    $("div").mouseleave(function(e) {

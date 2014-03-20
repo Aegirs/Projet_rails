@@ -52,7 +52,7 @@ class ColocationsController < ApplicationController
   
   def show
     @colocation=Colocation.find(params[:id])
-    @photo=@colocation.photos
+    @photos=@colocation.photos
     
     @nb_colocs_supp = @colocation.nbmaxcoloc.to_i - @colocation.occupants.to_i
     @hash = Gmaps4rails.build_markers(@colocation) do |colocation, marker|

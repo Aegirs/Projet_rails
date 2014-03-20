@@ -1,33 +1,34 @@
-%h2 Editer Colocation
-= simple_form_for (@colocation), :defaults => { :wrapper_html => {:class => 'form-group'}, :input_html => { :class => 'form-control',:multipart => true } } do |f|
-  #titre= f.input :titre
-  #titre= f.input :adress
-  #titre= f.input :superficie
-  #titre= f.input :chambre
-  #titre= f.input :nbmaxcoloc
-  #titre= f.input :loyer
-  #titre= f.input :occupants
-  #titre= f.input :description
-  %div
-    = f.label 'Photo'
-    #link
+%div
+  %h2 Editer Colocation
+  = simple_form_for (@colocation), :defaults => { :wrapper_html => {:class => 'form-group'}, :input_html => { :class => 'form-control',:multipart => true } } do |f|
+    #titre= f.input :titre
+    #titre= f.input :adress
+    #titre= f.input :superficie
+    #titre= f.input :chambre
+    #titre= f.input :nbmaxcoloc
+    #titre= f.input :loyer
+    #titre= f.input :occupants
+    #titre= f.input :description
+    %div
+      = f.label 'Photo'
+      #link
+        = f.fields_for :photos do |photo|
+          -unless photo.object.new_record? 
+            %div{id:photo.object.id,name: "bloc",style: "width:6%;"}
+              %a{"data-gallery" => "", href: "#{photo.object.image.url}", title: @colocation.titre, id: photo.object.id}
+                #{image_tag photo.object.image.url(:thumb), id: photo.object.id}
+              %br/
+              %div{ id: photo.object.id,name: "suppression" }
+                =photo.label "Supprimer"
+                =photo.check_box :must_be_deleted
+                
+               
+      %br/
       = f.fields_for :photos do |photo|
-        -unless photo.object.new_record? 
-          %div{id:photo.object.id,name: "bloc",style: "width:6%;"}
-            %a{"data-gallery" => "", href: "#{photo.object.image.url}", title: @colocation.titre, id: photo.object.id}
-              #{image_tag photo.object.image.url(:thumb), id: photo.object.id}
-            %br/
-            %div{ id: photo.object.id,name: "suppression" }
-              =photo.label "Supprimer"
-              =photo.check_box :must_be_deleted
-              
-             
+        -if photo.object.new_record? 
+          = photo.file_field :image
+      %button.btn.btn-default#ajout_edit Photo +
     %br/
-    = f.fields_for :photos do |photo|
-      -if photo.object.new_record? 
-        = photo.file_field :image
-    %button.btn.btn-default#ajout_edit Photo +
-  %br/
-  %p#fin Nombre photo Max  
-  %div
-    = f.submit "Editer"
+    %p#fin Nombre photo Max  
+    %div
+      = f.submit "Editer"

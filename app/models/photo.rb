@@ -9,5 +9,5 @@ class Photo < ActiveRecord::Base
 		:medium => "200x200>", 
 		:thumb => "100x100>" 
 		}, :default_url => "/images/:style/missing.png"	
-  
+  validates_attachment_size :image, :less_than => 2.megabytes
 end

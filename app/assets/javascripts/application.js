@@ -19,6 +19,8 @@
 
 $(document).on("ready",function(){
 	var id=0,id2=10, i=0,nb_click=0;
+	$(".jumbotron").css("padding-bottom","0px");
+	$(".jumbotron").css("padding-top","0px");
 	for(i=1;i <10;i++) {
 		$('#colocation_photos_attributes_'+(i)+'_image').css("display","none");
 		$('#colocation_photos_attributes_'+(i+10)+'_image').css("display","none");
@@ -61,12 +63,12 @@ $(document).on("ready",function(){
 			nb_click=nb_click+1;		
 	    });
 	 });
-			
+	
    $("div").mouseleave(function(e) {
 	    e.preventDefault();
 		$("div[name=suppression]").slideUp('500');
    });
-   $("div").mouseenter(function(e) {
+   $("img").mouseenter(function(e) {
 		var numero = this.id;
 	    e.preventDefault();
 	    console.log(numero);

@@ -69,20 +69,13 @@
           - else
             = link_to 'Se connecter', new_user_session_path, :class => 'navbar-link'
            
-    -@current_url = request.env['PATH_INFO']
-    %ul.nav.nav-tabs.nav-justified
-      -if @current_url.index("/acceuil") 
-        %li.active
-          %a{href: "/acceuil"} Acceuil
-      -else
+      -@current_url = request.env['PATH_INFO']
+      %ul.nav.nav-tabs.nav-justified
         %li
           %a{href: "/acceuil"} Acceuil
-      -if @current_url == "/" 
-        %li.active
+        %li
           %a{href: "/"} Carte
-      -else
-        %li
-          %a{href: "/"} Carte             
+
     .row
       .col-md-2
         -if @current_url.index("/comptes") || @current_url.index("/users/edit") || @current_url.index("/messages") || @current_url.index("/colocations/new")
@@ -123,5 +116,3 @@
           %p.alert.alert-error= alert
         .milieu
           = yield
-    %div
-      .jumbotron.masthead

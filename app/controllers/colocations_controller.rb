@@ -2,7 +2,7 @@ class ColocationsController < ApplicationController
   before_filter :authenticate_user!, except: [:index,:show]
   
   def index	
-	@colocation=Colocation.all
+	@colocation=Colocation.all.reverse
     @hash = Gmaps4rails.build_markers(@colocation) do |colocation, marker|
 		marker.lat colocation.latitude
 		marker.lng colocation.longitude

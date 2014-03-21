@@ -12,15 +12,17 @@
     %div
       = f.label 'Photo'
       #link
+      .row
         = f.fields_for :photos do |photo|
-          -unless photo.object.new_record? 
-            %div{id:photo.object.id,name: "bloc",style: "width:6%;"}
-              %a{"data-gallery" => "", href: "#{photo.object.image.url}", title: @colocation.titre, id: photo.object.id}
-                #{image_tag photo.object.image.url(:thumb), id: photo.object.id}
-              %br/
-              %div{ id: photo.object.id,name: "suppression" }
-                =photo.label "Supprimer"
-                =photo.check_box :must_be_deleted
+          .col-xs-6.col-md-1
+            -unless photo.object.new_record? 
+              %div{id:photo.object.id,name: "bloc"}
+                %a{"data-gallery" => "", href: "#{photo.object.image.url}", title: @colocation.titre, id: photo.object.id}
+                  #{image_tag photo.object.image.url(:thumb), id: photo.object.id}
+                %br/
+                %div{ id: photo.object.id,name: "suppression" }
+                  =photo.label "Supprimer"
+                  =photo.check_box :must_be_deleted
                 
                
       %br/

@@ -56,5 +56,5 @@ production:
   encoding: unicode
   database: Coloclify_production
   pool: 5
-  username: Coloclify
-  password:
+  username: tprails
+  password: thomas

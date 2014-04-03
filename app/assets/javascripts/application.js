@@ -76,7 +76,7 @@ $(document).on("ready",function(){
   });
   $('#ajout_membre').click(function(e){
       e.preventDefault();
-      
+	
       if ( id_m < 20 ) {
         id_m=id_m+1;
       }
@@ -113,7 +113,7 @@ $(document).on("ready",function(){
 	    console.log(numero);
 		$('div').each(function() {
 			if ( (this).id == numero ) {
-				$(this).slideDown('300');
+				$(this).slideDown('200');
 			}
 		});		
    });

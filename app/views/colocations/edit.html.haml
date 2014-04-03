@@ -8,52 +8,49 @@
           .row
             .col-md-2#titre1
               = f.input :titre
+              = f.input :superficie
+              = f.input :nbmaxcoloc
+              #titre1= f.input :loyer
+              #titre1= f.input :description
             .col-md-2#titre1
               = f.input :adress
-          .row
-            .col-md-2#titre1
-              = f.input :superficie
-            .col-md-2#titre1
               = f.input :chambre
-          .row
-            .col-md-2#titre1
-              = f.input :nbmaxcoloc
-            .col-md-2#titre1
-              = f.input :occupants
-          #titre1= f.input :loyer
-          #titre1= f.input :description
-          .row
-            .col-md-4
-              %div
-                %h4 Pseudo des occupants
-                =f.fields_for :locataires, multiple: true do |loc|
-                  -unless loc.object.new_record? 
-                    =loc.text_field :pseudo
-                    %br             
-              %h4 Pseudo des nouveaux occupants
-              %button.btn.btn-warning#ajout_membre +    
-              =f.fields_for :locataires, multiple: true do |loc|
-                -if loc.object.new_record?
-                  =loc.text_field :pseudo
-            .col-md-4
-              %div#photo
-                = f.label 'Photo'
-                #link
-                  = f.fields_for :photos do |photo|
-                    -unless photo.object.new_record? 
-                      %div{id:photo.object.id,name: "bloc",style: "width:6%;"}
-                        %a{"data-gallery" => "", href: "#{photo.object.image.url}", title: @colocation.titre, id: photo.object.id}
-                          #{image_tag photo.object.image.url(:thumb), id: photo.object.id}
-                        %br/
-                        %div{ id: photo.object.id,name: "suppression" }
-                          =photo.label "Supprimer"
-                          =photo.check_box :must_be_deleted                               
-                %br/
-                %button.btn.btn-warning#ajout_edit +
-                = f.fields_for :photos do |photo|
-                  -if photo.object.new_record? 
-                    = photo.file_field :image
-                %br/
-                %p#fin Nombre de photos maximums atteint  
+              = f.input :occupants 
+              .row
+                .col-md-6
+                  %div
+                    %h4 Pseudo des occupants
+                    =f.fields_for :locataires, multiple: true do |loc|
+                      -unless loc.object.new_record? 
+                        =loc.text_field :pseudo
+                        %br    
+                  -if ( @colocation.locataires.count != 0 )          
+                    %h4 Pseudo des nouveaux occupants
+       
+                  %button.btn.btn-warning#ajout_membre +    
+                  %br
+                  =f.fields_for :locataires, multiple: true do |loc|
+                    -if loc.object.new_record?
+                      =loc.text_field :pseudo
+                .col-md-6
+                  %div#photo
+                    = f.label 'Photo'
+                    #link
+                      = f.fields_for :photos do |photo|
+                        -unless photo.object.new_record? 
+                          %div{id:photo.object.id,name: "bloc",style: "width:100%;"}
+                            %a{"data-gallery" => "", href: "#{photo.object.image.url}", title: @colocation.titre, id: photo.object.id}
+                              #{image_tag photo.object.image.url(:thumb), id: photo.object.id}
+                            %br/
+                            %div{ id: photo.object.id,name: "suppression" }
+                              =photo.label "Supprimer"
+                              =photo.check_box :must_be_deleted                               
+                    %br/
+                    %button.btn.btn-warning#ajout_edit +
+                    = f.fields_for :photos do |photo|
+                      -if photo.object.new_record? 
+                        = photo.file_field :image
+                    %br/
+                    %p#fin Nombre de photos maximums atteint  
           %div
             #bouton= f.button :submit, "Editer",:class => "btn-danger"

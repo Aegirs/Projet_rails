@@ -105,11 +105,13 @@ class ColocationsController < ApplicationController
       		f.destroy
       	end
       end
-	  params[:colocation][:photos_attributes].each do |photo_attrs|
-	 	if ( photo_attrs[1]['must_be_deleted'] == "1" )
-	    	Photo.find(photo_attrs[1]['id']).destroy     
-	   	end
-	  end
+      if ( params[:colocation][:photos_attributes] != nil )
+		params[:colocation][:photos_attributes].each do |photo_attrs|
+			if ( photo_attrs[1]['must_be_deleted'] == "1" )
+				Photo.find(photo_attrs[1]['id']).destroy     
+			end
+		end
+	 end
       redirect_to "/colocations/#{params[:id]}" 
     else
     	render "edit"

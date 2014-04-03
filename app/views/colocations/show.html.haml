@@ -21,8 +21,13 @@
       %p 
         %ul Occupants
         -@colocation.locataires.each do |coloc|
-          %li 
-            #{coloc.pseudo}    
+          -@pmembre=User.find_by_pseudo( "#{coloc.pseudo}" )
+          %li
+            #{coloc.pseudo}
+            -if @pmembre != nil
+              %a{"data-gallery" => "", href: "#{}", title: coloc.pseudo, id: coloc.id}
+                #{image_tag (:thumb), id: coloc.id}
+               
       #link 
         -@photos.each do |photo|     
           %a{"data-gallery" => "", href: "#{photo.image.url}", title: @colocation.titre, id: photo.id}
@@ -34,8 +39,8 @@
           =button_to "Supprimer" , { :controller => :colocations, :action => 'destroy', :id => @colocation.id}, :method => :delete,  class: "btn btn-danger"
 
   .col-md-6
-    %div{style: "width: 100%; height: 400px;"}
-      #map{style: "width: 100%; height: 400px;"}
+    %div{style: "width: 100%; height: 600px;"}
+      #map{style: "width: 100%; height: 600px;"}
 
 :javascript
   handler = Gmaps.build('Google');

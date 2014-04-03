@@ -25,8 +25,8 @@
           %li
             #{coloc.pseudo}
             -if @pmembre != nil
-              %a{"data-gallery" => "", href: "#{}", title: coloc.pseudo, id: coloc.id}
-                #{image_tag (:thumb), id: coloc.id}
+              %a{"data-gallery" => "", href: "#{@pmembre.avatar.url}", title: coloc.pseudo, id: coloc.id}
+                #{image_tag @pmembre.avatar.url(:thumb), id: coloc.id}
                
       #link 
         -@photos.each do |photo|     

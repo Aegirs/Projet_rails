@@ -1,56 +1,27 @@
-.row.transparent
-  .col-md-6
-    %h2 Ajouter Colocation
-    = form_for @colocation,{ :multipart => true } do |f|
-      %div
-        =f.label :titre
-        %br/
-        =f.text_field :titre
-      %div
-        =f.label :adress
-        %br/
-        =f.text_field :adress
-      %div
-        =f.label :superficie
-        %br/
-        =f.text_field :superficie
-      %div
-        = f.label :chambre
-        %br/
-        = f.text_field :chambre
-      %div
-        = f.label :nbmaxcoloc
-        %br/
-        = f.text_field :nbmaxcoloc
-      %div
-        = f.label :loyer
-        %br/
-        = f.text_field :loyer
-      %div
-        = f.label :occupants
-        %br/
-        = f.text_field :occupants
-      %div
-        = f.label :description
-        %br/
-        = f.text_area :description
-      %div
-        = f.label 'Photo'
-        %br/
-        = f.fields_for :photos, multiple: true do |photo|   
-          = photo.file_field :image
-        %br/
-        %button.btn.btn-default#ajout Photo +
-      %br/
-      %p#fin Nombre photo Max  
-      %div= f.submit "Ajouter Colocation"
-  .col-md-6
-    %h1 Mes Colocations
-    %div#defile{style: "overflow: auto"}
-      -@colocations.each do |colocations|
-        .list-group
-          %a.btn.btn.btn-lg{href: "/colocations/#{colocations.id}", role: "button"}  
-            %h4.list-group-item-heading=colocations.titre
-            %p.list-group-item-text="Adresse : #{colocations.adress}"
-            %p.list-group-item-text="Superficie : #{colocations.superficie} m²"
+.row
+  .col-md-4
+  .col-md-8
+    .transparent2
+      %h2#editioncoloc Ajouter Colocation
+      =simple_form_for(@colocation, :defaults => { :wrapper_html => {:class => 'form-group'}, :input_html => { :class => 'form-control' } }) do |f|
+        .row
+          .col-md-4#titre1
+            = f.input :titre
+            = f.input :superficie
+            = f.input :nbmaxcoloc
+            #titre2= f.input :loyer
+            = f.input :description
+          .col-md-4#titre1
+            = f.input :adress
+            = f.input :chambre
+            = f.input :occupants   
+          %div#photo
+            = f.label 'Photo'
+            %br/
+            %button.btn.btn-warning#ajout  +
+            = f.fields_for :photos, multiple: true do |photo|   
+              = photo.file_field :image
+          %br/
+          %p#fin Nombre photo Max  
+        #bouton= f.button :submit, "Ajouter Colocation", :class => "btn-primary"
 

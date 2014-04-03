@@ -1,50 +1,31 @@
-.transparent
-  .block
-    %h2
-      Edition du profil #{current_user.email.to_s}
-    = form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put }) do |f|
-      = devise_error_messages!
-      %div
-        = f.label 'Photo'
-        %br/
-        = image_tag current_user.avatar.url(:medium)
-        = f.file_field :avatar
-      %div
-        =f.label :nom
-        %br/
-        =f.text_field :nom, :autofocus => true
-      %div
-        =f.label :prenom
-        %br/
-        =f.text_field :prenom, :autofocus => true
-      %div
-        =f.label :pseudo
-        %br/
-        =f.text_field :pseudo, :autofocus => true
-      %div
-        = f.label :email
-        %br/
-        = f.email_field :email, :autofocus => true
-      - if devise_mapping.confirmable? && resource.pending_reconfirmation?
+.row
+  .col-md-4
+  .col-md-8
+    .transparent
+      %h2
+        Edition du profil #{current_user.pseudo.to_s}
+      = simple_form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put },:defaults => { :wrapper_html => {:class => 'form-group'}, :input_html => { :class => 'form-control' } }) do |f|
+        = devise_error_messages!
         %div
-          Currently waiting confirmation for: #{resource.unconfirmed_email}
-      %div
-        = f.label :Mot_de_passe
-        %i (Pour ne pas changer, laisser vide)
+          = f.label 'Photo'
+          %br/
+          = image_tag current_user.avatar.url(:medium)
+          = f.file_field :avatar
+        %div
+          #titre= f.input :email, :autofocus => true
+          #titre=f.input :nom
+          #titre=f.input :prenom, :autofocus => true
+          #titre=f.input :pseudo, :autofocus => true
+          #titre= f.input :password, :autocomplete => "off"
+          #titre= f.input :password_confirmation
+          %i (Votre ancien mot de passe pour valider les changements)
+          %br/
+          #titre= f.input :current_password
         %br/
-        = f.password_field :password, :autocomplete => "off"
-      %div
-        = f.label :Confirmation_du_mot_de_passe
+        %div= f.button :submit, "Mettre à jour", :class => "btn-primary"
         %br/
-        = f.password_field :password_confirmation
-      %div
-        = f.label :Mot_de_passe_actuel
-        %i (Votre ancien mot de passe pour valider les changements)
-        %br/
-        = f.password_field :current_password
-      %br/
-      %div= f.submit "Mettre à jour"
-    %h3 Cancel my account
-    %p
-      Pas content ? #{button_to "Annuler mon compte", registration_path(resource_name), :data => { :confirm => "Etes-vous sûr ?" }, :method => :delete}
-    = link_to "Retour", :back
+      .row
+        .col-md-4
+          #{button_to "Supprimer mon compte", registration_path(resource_name), :data => { :confirm => "Etes-vous sûr ?" }, :method => :delete, :class => "btn-danger"}
+        .col-md-2
+          #retour= button_to "Retour", :back

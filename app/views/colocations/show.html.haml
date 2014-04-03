@@ -2,34 +2,38 @@
 %script{src: "//google-maps-utility-library-v3.googlecode.com/svn/tags/markerclustererplus/2.0.14/src/markerclusterer_packed.js", type: "text/javascript"}
 %script{src: "//google-maps-utility-library-v3.googlecode.com/svn/trunk/richmarker/src/richmarker-compiled.js", type: "text/javascript"}
 
-.row
+.row#row2
   .col-md-6
-    %h1=@colocation.titre
-    %br/
-    %p
-      Cette colocation est située à #{@colocation.adress}
-    %p
-      Pour #{@colocation.superficie} m² avec #{@colocation.chambre} chambres
-    %p
-      L'appartement est acutellement occupé par #{@colocation.occupants} personnes
+    .transparent
+      %h1=@colocation.titre
       %br/
-      Ils sont à la recherche de #{@nb_colocs_supp} personnes supplémentaires.
-      %br/
-      Pour seulement : #{@colocation.loyer} €.
-    %p=@colocation.description
-    
-    #link 
-      -@photos.each do |photo|     
-        %a{"data-gallery" => "", href: "#{photo.image.url}", title: @colocation.titre, id: photo.id}
-          #{image_tag photo.image.url(:thumb), id: photo.id}
-      
-    -if user_signed_in?
-      -if current_user.pseudo == @colocation.owner
-        =button_to "Editer la colocation", "/colocations/#{@colocation.id}/edit",:controller => :colocations, :id => @colocation.id, class: "btn btn-default", :method => :get
-        =button_to "Supprimer" , { :controller => :colocations, :action => 'destroy', :id => @colocation.id}, :method => :delete,  class: "btn btn-danger"
+      %p
+        Cette colocation est située à #{@colocation.adress}
+      %p
+        Pour #{@colocation.superficie} m² avec #{@colocation.chambre} chambres
+      %p
+        L'appartement est acutellement occupé par #{@colocation.occupants} personnes
+        %br/
+        Ils sont à la recherche de #{@nb_colocs_supp} personnes supplémentaires.
+        %br/
+        Pour seulement : #{@colocation.loyer} €.
+      %p=@colocation.description
+      %p 
+        %ul Occupants
+        -@colocation.locataires.each do |coloc|
+          %li 
+            #{coloc.pseudo}    
+      #link 
+        -@photos.each do |photo|     
+          %a{"data-gallery" => "", href: "#{photo.image.url}", title: @colocation.titre, id: photo.id}
+            #{image_tag photo.image.url(:thumb), id: photo.id}
+        
+      -if user_signed_in?
+        -if current_user.pseudo == @colocation.owner
+          =button_to "Editer la colocation", "/colocations/#{@colocation.id}/edit",:controller => :colocations, :id => @colocation.id, class: "btn btn-default", :method => :get
+          =button_to "Supprimer" , { :controller => :colocations, :action => 'destroy', :id => @colocation.id}, :method => :delete,  class: "btn btn-danger"
 
   .col-md-6
-    %h1 Carte
     %div{style: "width: 100%; height: 400px;"}
       #map{style: "width: 100%; height: 400px;"}
 

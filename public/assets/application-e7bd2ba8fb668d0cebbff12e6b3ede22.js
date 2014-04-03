@@ -11763,10 +11763,6 @@ $(this).data("id")**/
 
 
 }).call(this);
-(function() {
-
-
-}).call(this);
 // This is a manifest file that'll be compiled into application.js, which will include all the files
 // listed below.
 //
@@ -11786,16 +11782,49 @@ $(this).data("id")**/
 
 
 
+
 $(document).on("ready",function(){
-	var id=0,id2=11, i=0,nb_click=0;
+  $('#colocation').hover(function(e){
+    e.preventDefault();
+    $('#menucoloc').css("display","block");
+    $('#colocation').mouseleave(function(e){
+      e.preventDefault();
+      $('#menucoloc').css("display","none");
+    });
+  });
+  $('#compte').hover(function(e){
+    e.preventDefault();
+    $('#menucompte').css("display","block");
+    $('#compte').mouseleave(function(e){
+      e.preventDefault();
+      $('#menucompte').css("display","none");
+    });
+  });
+  if ($(location).attr('href')=="http://localhost:3000/colocations/new" || $(location).attr('href')=="http://localhost:3000/comptes")
+    {  
+      $('#ajoutcoloc2').css("display","block");
+    } 
+  if ($(location).attr('href')=="http://localhost:3000/colocations/new")
+    {
+      $('#ajoutcoloc3').addClass('active');
+    }
+  if ($(location).attr('href')=="http://localhost:3000/comptes")
+    {
+      $('#mescolocs').addClass('active');
+    }
+
+
+	var id=0,id2=11, i=0,nb_click=0,id_m=12;
 	$(".jumbotron").css("padding-bottom","0px");
 	$(".jumbotron").css("padding-top","0px");
-	for(i=1;i <10;i++) {
+	for(i=1;i<10;i++) {
 		$('#colocation_photos_attributes_'+(i)+'_image').css("display","none");
 		$('#colocation_photos_attributes_'+(i+10)+'_image').css("display","none");
+    $('#colocation_locataires_attributes_'+(i+10)+'_pseudo').css("display","none");
 	}
 	$("div[name^='suppression']").css("display","none");
-    $('#ajoutcoloc').click(function(e){
+
+  $('#ajoutcoloc').click(function(e){
       e.preventDefault();
       if ($('#ajoutcoloc2').is(':hidden')){
         $('#ajoutcoloc2').slideDown('500');
@@ -11804,25 +11833,39 @@ $(document).on("ready",function(){
       else{
         $('#ajoutcoloc2').slideUp('300');
       }
-    });
+  });
     
-    $('#ajout').click(function(e){
+  $('#ajout').click(function(e){
       e.preventDefault();
       
       if ( id < 9 ) {
-		  id=id+1;
-		  id2=id2+1;
-	  }
-	  $('#colocation_photos_attributes_'+id+'_image').slideDown('500');
-	  $('#colocation_photos_attributes_'+id+'_image').css("display","block");
+		    id=id+1;
+		    id2=id2+1;
+	    }
+	    $('#colocation_photos_attributes_'+id+'_image').slideDown('500');
+	    $('#colocation_photos_attributes_'+id+'_image').css("display","block");
 	  
-	  if ( id == 9 ) {
-		$('#ajout').hide();
-		$('#fin').css("display","block");
-	  }
-    });
+	    if ( id == 9 ) {
+		    $('#ajout_edit').hide();
+		    $('#fin').css("display","block");
+	    }
+  });
+  $('#ajout_membre').click(function(e){
+      e.preventDefault();
+      
+      if ( id_m < 20 ) {
+        id_m=id_m+1;
+      }
+      $('#colocation_locataires_attributes_'+id_m+'_pseudo').slideDown('500');
+      $('#colocation_locataires_attributes_'+id_m+'_pseudo').css("display","block");
     
-     $('#ajout_edit').on("click",function(e){
+      if ( id == 20 ) {
+        $('#ajout_membre').hide();
+        $('#fin').css("display","block");
+      }
+  });
+    
+  $('#ajout_edit').on("click",function(e){
 		e.preventDefault();
 		console.log($("img").length);
 		var id3 = $("img").length + id2 + nb_click;
@@ -11830,7 +11873,11 @@ $(document).on("ready",function(){
 		$('#colocation_photos_attributes_'+id3+'_image').slideDown('500');
 		$('#colocation_photos_attributes_'+id3+'_image').css("display","block");
 		nb_click=nb_click+1;		
-	 });
+    if ( id3 == 19 ) {
+    $('#ajout').hide();
+    $('#fin').css("display","block");
+    }
+	});
 	
    $("div").mouseleave(function(e) {
 	    e.preventDefault();

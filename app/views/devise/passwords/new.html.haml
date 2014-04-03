@@ -1,9 +1,10 @@
 %h2 Vous avez oublié votre mot de passe ?
-= form_for(resource, :as => resource_name, :url => password_path(resource_name), :html => { :method => :post }) do |f|
+= simple_form_for(resource, :as => resource_name, :url => password_path(resource_name), :html => { :method => :post },:defaults => { :wrapper_html => {:class => 'form-group'}, :input_html => { :class => 'form-control' } }) do |f|
   = devise_error_messages!
   %div
     = f.label :email
     %br/
     = f.email_field :email, :autofocus => true
+  %br/
   %div
-    = f.submit "Envoyez-moi les instructions par email"
+    = f.button :submit, "Envoyez-moi les instructions par email", :class => "btn-primary"

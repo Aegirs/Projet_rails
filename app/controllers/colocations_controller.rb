@@ -35,14 +35,13 @@ class ColocationsController < ApplicationController
   def new
     @colocations=Colocation.where( owner: current_user.pseudo )
 	@colocation=Colocation.new
-	10.times {@colocation.photos.build}
-	
+
+	10.times {@colocation.photos.build}	
   end
   
   def create
-	@colocation=Colocation.new(params.required(:colocation).permit(:titre,:adress,:superficie,:chambre,:nbmaxcoloc,:loyer,:occupants,:description,photos_attributes: [:image]))
+	@colocation=Colocation.new(params.required(:colocation).permit(:titre,:adress,:superficie,:chambre,:nbmaxcoloc,:loyer,:occupants,:description,photos_attributes: [:image],locataires_attributes: [:pseudo]))
 	@colocation.owner = current_user.pseudo
-	
 	if @colocation.save
 		redirect_to root_path
 	else
@@ -86,26 +85,34 @@ class ColocationsController < ApplicationController
  def edit   
   	@colocation=Colocation.find(params[:id])
   	@photos=@colocation.photos
+  	@locataire=@colocation.locataires
   	@nombre = @photos.count
+  	@nb_loc = @colocation.nbmaxcoloc - @locataire.count
+
   	(10 - @nombre).times {@colocation.photos.build}
-  	if current_user.pseudo != @colocation.owner
+  	(@nb_loc).times {@colocation.locataires.build}
+
+  	if ( current_user.pseudo != @colocation.owner )
   	  redirect_to "/colocations/#{params[:id]}"
   	end
   end
   
   def update
     @colocation=Colocation.find(params[:id]) 
-    if @colocation.update(params[:colocation].permit(:titre,:adress,:superficie,:chambre,:nbmaxcoloc,:loyer,:occupants,:description,photos_attributes: [:image,:id]))
-      
-      params[:colocation][:photos_attributes].each do |photo_attrs|
-	  if ( photo_attrs[1]['must_be_deleted'] == "1" )
-	     Photo.find(photo_attrs[1]['id']).destroy
-	    end
+    if @colocation.update(params[:colocation].permit(:titre,:adress,:superficie,:chambre,:nbmaxcoloc,:loyer,:occupants,:description,photos_attributes: [:image,:id],locataires_attributes: [:pseudo,:id]))
+      Locataire.all.each do |f|
+      	if f.pseudo == ""
+      		f.destroy
+      	end
+      end
+	  params[:colocation][:photos_attributes].each do |photo_attrs|
+	 	if ( photo_attrs[1]['must_be_deleted'] == "1" )
+	    	Photo.find(photo_attrs[1]['id']).destroy     
+	   	end
 	  end
-      
-      redirect_to "/colocations/#{params[:id]}"
+      redirect_to "/colocations/#{params[:id]}" 
     else
-      render 'edit'
+    	render "edit"
     end
   end 
 

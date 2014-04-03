@@ -8,8 +8,8 @@
  * You're free to add application-wide styles to this file and they'll appear at the top of the
  * compiled file, but it's generally better to create a new file per style scope.
  *
- *= require_self
- *= require_tree .
+
+
  */
  
 #map img { 
@@ -25,19 +25,19 @@
 	margin-top: 5%;
 }
 
-body{
-	background: url('/assets/fond8.jpg');
-	background-size: 100%;
-	background-position:center;
+.milieu{
+	background: url('/assets/fond7.jpg');
 }
+
 
 #navigation{
 	margin-top:-30px;
-	background-color: white;
 }
 
 .jumbotron{
-	background-color: white
+	background: url('/assets/');
+	background-position: center;
+	background-size: 100% auto;
 }
 
 .logo{
@@ -54,7 +54,7 @@ body{
 	text-align: left
 }
 .list-group{
-	box-shadow: none;	
+	box-shadow: 0 2px 5px;
 }
 
 #defile
@@ -108,15 +108,15 @@ li.dropdown-menu{
 }
 
 #menucoloc{
-	display:none;
+	
 	padding:0px;
-	width:495px;
+	width:100%;
 }
 
 #menucompte{
-	display:none;
+	
 	padding:0px;
-	width:475px;
+	width:100%;
 }
 
 .transparent{
@@ -152,3 +152,20 @@ li.dropdown-menu{
 #photo{
 	margin-left:45%;
 }
+// Place all the styles related to the acceuil controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+// Place all the styles related to the colocation controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+// Place all the styles related to the comptes controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+.transparent{
+	background-color:rgba(255,255,255,0.7);
+	width: 55%;
+	padding:30px;
+}
+// Place all the styles related to the messages controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/

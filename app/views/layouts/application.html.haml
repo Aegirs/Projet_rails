@@ -2,9 +2,7 @@
 %html
   %head
     %title Projet
-    = stylesheet_link_tag "application", media: "all", "data-turbolinks-track" => true
-    = javascript_include_tag "application", "data-turbolinks-track" => true
-    = csrf_meta_tags
+    
     %link{href: "//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css", rel: "stylesheet"}/
     %link{href: "//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap-theme.min.css", rel: "stylesheet"}/
     
@@ -18,7 +16,11 @@
     %script{src: "//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"}
     %script{src: "//maps.google.com/maps/api/js?v=3.13&sensor=false&libraries=geometry", type: "text/javascript"}
     %script{src: "//google-maps-utility-library-v3.googlecode.com/svn/tags/markerclustererplus/2.0.14/src/markerclusterer_packed.js", type: "text/javascript"}
-      
+    
+    = stylesheet_link_tag "application", media: "all", "data-turbolinks-track" => true
+    = javascript_include_tag "application", "data-turbolinks-track" => true
+    = csrf_meta_tags
+    
   %body
     / The Bootstrap Image Gallery lightbox, should be a child element of the document body
     #blueimp-gallery.blueimp-gallery
@@ -53,7 +55,7 @@
           %font{size: '100% auto'}
             Coloclify
         .col-md-2 
-          
+          %br
           %p.navbar-text.pull-right
           - if user_signed_in?
             = succeed "" do
@@ -63,56 +65,31 @@
               %br/
             %strong
               = link_to "Se déconnecter", destroy_user_session_path, method: :delete, :class => 'navbar-link'
-              %br/
-              = link_to 'Mon compte', comptes_path, :class => 'navbar-link'
-              
           - else
             = link_to 'Se connecter', new_user_session_path, :class => 'navbar-link'
-           
-      -@current_url = request.env['PATH_INFO']
-      %ul.nav.nav-tabs.nav-justified
-        %li
-          %a{href: "/acceuil"} Acceuil
-        %li
-          %a{href: "/"} Carte
-
-    .row
-      .col-md-2
-        -if @current_url.index("/comptes") || @current_url.index("/users/edit") || @current_url.index("/messages") || @current_url.index("/colocations/new")
-          %ul.nav.nav-pills.nav-stacked
-            -if @current_url.index("/comptes")
-              %li.active
-                %a{href: "/comptes"} Informations Pratiques
-            -else
-              %li
-                %a{href: "/comptes"}  Informations Pratiques
-            -if @current_url.index("/colocations/new")
-              %li.active
-                %a{href: "/colocations/new"} Gérer mes Colocations
-            -else
-              %li
-                %a{href: "/colocations/new"} Gérer mes Colocations                           
-            -if @current_url == "/users/edit" 
-              %li.active
-                %a{href: "/users/edit"} Informations
-            -else
-              %li
-                %a{href: "/users/edit"} Infomations
-            -if @current_url.index("/messages") 
-              %li.active
-                %a{href: "/messages"} Messages
-            -else
-              %li
-                %a{href: "/messages"} Messages   
-            
-        -else
-          %ul.nav.nav-pills.nav-stacked
-            
-        
-      .col-md-10
-        - if notice
-          %p.alert.alert-notice= notice
-        - if alert
-          %p.alert.alert-error= alert
-        .milieu
-          = yield
+    %ul.nav.nav-tabs.nav-justified#navigation
+      %li
+        %a{href:"/colocations"} Carte des colocs
+      %li.dropdown#colocation
+        %a.dropdown-toggle{"data-toggle" => "dropdown", href: "#"} 
+          Gérer mes colocations
+          %b.caret
+        %ul.dropdown-menu.nav.nav-pills.nav-stacked#menucoloc
+          %li
+            %a{href: "/colocations/new"} Ajouter une colocation
+          %li
+            %a{href: "/comptes"} Mes colocations
+      %li.dropdown#compte
+        %a.dropdown-toggle{"data-toggle" => "dropdown", href: "#"} 
+          Gérer mon compte
+          %b.caret
+        %ul.dropdown-menu.nav.nav-pills.nav-stacked#menucompte
+          %li
+            %a{href: "/users/edit"} Editer mon compte
+      %li
+        %a{href: "/messages"} Messages
+    - if notice
+      %p.alert.alert-notice= notice
+    - if alert
+      %p.alert.alert-error= alert
+    = yield 

@@ -1,3 +1,9 @@
-// Place all the styles related to the colocation controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+.transp{
+	background-color:rgba(255,255,255,0.8);
+	width: 55%;
+	padding:5%;
+	margin-top:8%;
+	margin-bottom: 2%;
+	border-radius:5%;
+	margin-left: 25%;
+}

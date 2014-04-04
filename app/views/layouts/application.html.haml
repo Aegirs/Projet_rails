@@ -56,8 +56,9 @@
             Coloclify
         .col-md-2 
           %br
-          %a{"data-gallery" => "", href: "#{current_user.avatar}", title: current_user.pseudo, id: current_user.id}
-            #{image_tag current_user.avatar(:thumb), id: current_user.id}
+          -if current_user
+            %a{"data-gallery" => "", href: "#{current_user.avatar}", title: current_user.pseudo, id: current_user.id}
+              #{image_tag current_user.avatar(:thumb), id: current_user.id}
           %br
           %p.navbar-text.pull-right
           - if user_signed_in?

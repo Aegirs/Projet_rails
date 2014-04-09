@@ -7,15 +7,17 @@
     .col-md-8
       %div{style: "width: 100%; height: 400px;"}
         #map{style: "width: 100%; height: 400px;position: relative; overflow: hidden;"}
+    
     .col-md-4
-      %h2="Liste des colocations"
-      %div#defile{style: "overflow: auto"}
-        -@colocations.each do |colocations|
-          .list-group
-            %a.btn.btn.btn-lg{href: "/colocations/#{colocations.id}", role: "button"}  
-              %h4.list-group-item-heading=colocations.titre
-              %p.list-group-item-text="Adresse : #{colocations.adress}"
-              %p.list-group-item-text="Superficie : #{colocations.superficie} m²"
+      .trans
+        %h2="Liste des colocations"
+        %div#defile{style: "overflow: auto"}
+          -@colocations.each do |colocations|
+            .list-group
+              %a.btn.btn.btn-lg{href: "/colocations/#{colocations.id}", role: "button"}  
+                %h4.list-group-item-heading=colocations.titre
+                %p.list-group-item-text="Adresse : #{colocations.adress}"
+                %p.list-group-item-text="Superficie : #{colocations.superficie} m²"
 :javascript
   handler = Gmaps.build('Google');
   handler.buildMap({ 

@@ -37,11 +37,11 @@ body{
 
 #navigation{
 	margin-top:-30px;
-	background-color: white;
+	background-color: #0B3861;
 }
 
 .jumbotron{
-	background-color: white
+	background-color: #0B3861;	
 }
 
 .logo{
@@ -116,12 +116,14 @@ li.dropdown-menu{
 	display:none;
 	padding:0px;
 	width:34.4%;
+	background-color: #0B3861;
 }
 
 #menucompte{
 	display:none;
 	padding:0px;
 	width:33.05%;
+	background-color: #0B3861;
 }
 
 .transparent{

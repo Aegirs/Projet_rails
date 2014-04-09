@@ -52,8 +52,7 @@
       .container
       .row
         .col-md-10
-          %font{size: '100% auto'}
-            Coloclify
+          %img{alt: "Smiley face", height: "200", src: "/assets/colocify.png", width: "200"}
         .col-md-2 
           %br
           -if current_user
@@ -65,7 +64,8 @@
             = succeed "" do
               %font{color: "green"}
                 %strong= current_user.pseudo
-              connecté
+              %font{color: "white"}
+                connecté
               %br/
             %strong
               = link_to "Se déconnecter", destroy_user_session_path, method: :delete, :class => 'navbar-link'
@@ -75,21 +75,27 @@
       %li
         %a{href:"/colocations"} Carte des colocs
       %li.dropdown#colocation
-        %a.dropdown-toggle{"data-toggle" => "dropdown", href: "#"} 
+        %a.dropdown-toggle{"data-toggle" => "dropdown", href: "#"}
           Gérer mes colocations
           %b.caret
         %ul.dropdown-menu.nav.nav-pills.nav-stacked#menucoloc
           %li
-            %a{href: "/colocations/new"} Ajouter une colocation
+            %a{href: "/colocations/new"} 
+              %font{color: "#0080FF"}
+                Ajouter une colocation
           %li
-            %a{href: "/comptes"} Mes colocations
+            %a{href: "/comptes"}
+              %font{color: "#0080FF"}
+                Mes colocations
       %li.dropdown#compte
         %a.dropdown-toggle{"data-toggle" => "dropdown", href: "#"} 
           Gérer mon compte
           %b.caret
         %ul.dropdown-menu.nav.nav-pills.nav-stacked#menucompte
           %li
-            %a{href: "/users/edit"} Editer mon compte
+            %a{href: "/users/edit"} 
+              %font{color: "#0080FF"}
+                Editer mon compte
     - if notice
       %p.alert.alert-notice= notice
     - if alert

@@ -102,7 +102,7 @@ body{
 }
 
 #ajout_edit{
-	width:35%;
+	width:20%;
 	height:1%;
 }
 
@@ -155,9 +155,5 @@ li.dropdown-menu{
 	margin-left:30%;
 }
 #bouton{
-	margin-left:45%;
-}
-
-#photo{
 	margin-left:45%;
 }

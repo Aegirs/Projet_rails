@@ -33,7 +33,7 @@
                     -if loc.object.new_record?
                       =loc.text_field :pseudo
                 .col-md-6
-                  %div#photo
+                  %div
                     = f.label 'Photo'
                     #link
                       = f.fields_for :photos do |photo|

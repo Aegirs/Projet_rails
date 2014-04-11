@@ -37,9 +37,6 @@ $(document).on("ready",function(){
 	var id=0,id2=11, i=0,nb_click=0,id_m=12;
 	$(".jumbotron").css("padding-bottom","0px");
 	$(".jumbotron").css("padding-top","0px");
-	$("#colocation_description").css("width","414px");
-	$("#colocation_description").css("height","125px");
-	$("#colocation_loyer").css("width","414px");
 	
 	for(i=1;i<10;i++) {
 		$('#colocation_photos_attributes_'+(i)+'_image').css("display","none");

@@ -5,13 +5,13 @@
       %h2#editioncoloc Ajouter Colocation
       =simple_form_for(@colocation, :defaults => { :wrapper_html => {:class => 'form-group'}, :input_html => { :class => 'form-control' } }) do |f|
         .row
-          .col-md-4#titre1
+          .col-md-6
             = f.input :titre
             = f.input :superficie
             = f.input :nbmaxcoloc
-            #loyer= f.input :loyer
+            = f.input :loyer
             = f.input :description
-          .col-md-4#titre1
+          .col-md-6
             = f.input :adress
             = f.input :chambre
             = f.input :occupants   

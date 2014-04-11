@@ -6,13 +6,13 @@
         %h2#editioncoloc Editer Colocation
         = simple_form_for (@colocation), :defaults => { :wrapper_html => {:class => 'form-group'}, :input_html => { :class => 'form-control',:multipart => true } } do |f|
           .row
-            .col-md-2#titre1
+            .col-md-6
               = f.input :titre
               = f.input :superficie
               = f.input :nbmaxcoloc
-              #loyer= f.input :loyer
+              = f.input :loyer
               = f.input :description
-            .col-md-2#titre1
+            .col-md-6
               = f.input :adress
               = f.input :chambre
               = f.input :occupants 

@@ -15,13 +15,13 @@
             = f.input :adress
             = f.input :chambre
             = f.input :occupants   
-          %div#photo
-            = f.label 'Photo'
+            %div#photo
+              = f.label 'Photo'
+              %br/
+              %button.btn.btn-warning#ajout  +
+              = f.fields_for :photos, multiple: true do |photo|   
+                = photo.file_field :image
             %br/
-            %button.btn.btn-warning#ajout  +
-            = f.fields_for :photos, multiple: true do |photo|   
-              = photo.file_field :image
-          %br/
-          %p#fin Nombre photo Max  
+            %p#fin Nombre photo Max  
         #bouton= f.button :submit, "Ajouter Colocation", :class => "btn-primary"
 

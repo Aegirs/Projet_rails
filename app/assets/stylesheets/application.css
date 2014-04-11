@@ -90,7 +90,9 @@ body{
 {
 	width: 70%;
 }
-
+#loyer {
+	width: 300px;
+}
 #titre1
 {
 	width: 50%;
